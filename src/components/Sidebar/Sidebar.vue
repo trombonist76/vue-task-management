@@ -1,6 +1,6 @@
 <script setup>
-import ToggleInput from './ToggleInput.vue';
-import Board from './Board.vue';
+import SidebarSwitch from './SidebarSwitch.vue';
+import SidebarBoard from './SidebarBoard.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useThemeStore } from "@/stores/use-theme"
 import { useMouse } from "@/composables/use-mouse"
@@ -33,7 +33,7 @@ const isBoardActive = (board) => {
     <h4 class="text-xs tracking-widest text-slate-400 mb-6 mt-24 pl-6">ALL BOARDS ({{ boardStore.boards.length }})</h4>
     <div>
       <ul>
-        <Board @click="boardStore.changeActiveBoard(board)" v-for="board in boardStore.boards" :key="board.id"
+        <SidebarBoard @click="boardStore.changeActiveBoard(board)" v-for="board in boardStore.boards" :key="board.id"
           :board="board" :isActive="isBoardActive" />
       </ul>
       <div class="pl-6 py-2 flex items-center gap-2 text-slate-400">
@@ -42,7 +42,7 @@ const isBoardActive = (board) => {
       </div>
     </div>
     <div class="pl-4 mt-auto mb-7">
-      <ToggleInput :isThemeLight="themeStore.isLight" :toggleTheme="themeStore.toggleTheme" />
+      <SidebarSwitch :isThemeLight="themeStore.isLight" :toggleTheme="themeStore.toggleTheme" />
       <button @click="hidePanel" class="text-xs text-gray-400 font-semibold tracking-wide mt-4">
         <font-awesome-icon class="mr-2" icon="fa-regular fa-eye-slash" />
         Hide Sidebar
