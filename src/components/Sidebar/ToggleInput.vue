@@ -22,6 +22,5 @@ const toggleThemeHandler = () => {
       </button>
       <font-awesome-icon class="w-4" icon="fa-regular fa-sun" />
     </div>
-
   </div>
 </template>

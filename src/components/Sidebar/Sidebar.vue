@@ -11,7 +11,7 @@ const themeStore = useThemeStore()
 const mouse = useMouse()
 const isVisible = ref(true)
 const visibilityClass = computed(() => ({
-  "-translate-x-full": !isVisible.value
+  "w-0 overflow-hidden": !isVisible.value
 }))
 
 watch(() => mouse.x.value, () => {
@@ -29,7 +29,7 @@ const isBoardActive = (board) => {
 </script>
 <template>
   <div :class="visibilityClass"
-    class="min-w-1/3 w-1/6 flex-shrink-0 bg-brand text-white h-full pr-7 flex flex-col transition-all delay-150 border-r border-gray-700">
+    class="w-1/3 md:w-1/6 text-white h-full pr-7 flex flex-col transition-all delay-150 border-r border-gray-700">
     <h4 class="text-xs tracking-widest text-slate-400 mb-6 mt-24 pl-6">ALL BOARDS ({{ boardStore.boards.length }})</h4>
     <div>
       <ul>

@@ -14,6 +14,9 @@ module.exports = {
         "primary":{
           DEFAULT:"#645FC6",
           "light":"#A8A4FF"
+        },
+        "border": {
+          DEFAULT: "#3E3F4E"
         }
       }
     },

@@ -1,5 +1,4 @@
 <script setup>
-import HeaderPanel from '../Header/Header.vue';
 import TaskModal from '../Modal/TaskModal.vue';
 import Field from './Field.vue';
 import { useBoardStore } from "@/stores/use-board"
@@ -15,7 +14,6 @@ const fields = computed(() => bindColorsToStatus(colors, boardStore.activeBoard.
 </script>
 <template>
   <div class="flex-1 flex flex-col text-white">
-    <HeaderPanel :toggleModal="modalStore.toggleModal"/>
     <main class="flex-1 bg-brand-dark px-7 py-4 flex gap-6">
       <Field v-for="(field,index) in fields" :key="index" :field="field" :activeBoard="boardStore.activeBoard"/>
     </main>

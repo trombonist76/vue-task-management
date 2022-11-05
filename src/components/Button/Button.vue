@@ -11,10 +11,10 @@
 
 <style lang="scss" scoped>
   .btn{
-    @apply text-sm flex justify-center items-center rounded-full px-4 py-2 gap-1;
+    @apply flex items-center rounded-full py-1 gap-1 px-4 sm:py-2;
 
     &__icon{
-      @apply text-base
+      @apply text-base lg:text-lg
     }
   }
 </style>

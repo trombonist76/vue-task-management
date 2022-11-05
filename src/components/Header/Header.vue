@@ -1,23 +1,35 @@
 <script setup>
-import { useBoardStore } from "@/stores/use-board"
 import ButtonComp from "@/components/Button/Button.vue"
-const props = defineProps(["toggleModal"])
+import HeaderLogo from "@/components/Header/HeaderLogo.vue"
+import HeaderButtons from "@/components/Header/HeaderButtons.vue"
+import { useBoardStore } from "@/stores/use-board"
+import { useModalStore } from '@/stores/use-modal'
+
 const boardStore = useBoardStore()
+const modalStore = useModalStore()
 
 </script>
 <template>
   <div class="header">
-    <h1 class="header__title" >{{boardStore.activeBoard.title}}</h1>
-    <ButtonComp @click="props.toggleModal" class="bg-primary" icon="add" name="Add New Task"></ButtonComp>
+    <HeaderLogo></HeaderLogo>
+    <div class="header__content">
+      <h1 class="header__title">{{ boardStore.activeBoard.title }}</h1>
+      <ButtonComp icon="expand_more"></ButtonComp>
+      <HeaderButtons :toggleModal="modalStore.toggleModal"></HeaderButtons>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.header{
-  @apply bg-brand w-full h-16 px-7 flex items-center text-white justify-between border-b border-gray-700;
+.header {
+  @apply w-full h-24 flex border-b border-gray-700;
 
-  &__title{
-    @apply text-lg
+  &__content{
+    @apply flex flex-1 items-center px-4 md:px-6 lg:px-8;
+  }
+
+  &__title {
+    @apply font-bold text-sm md:text-lg lg:text-xl xl:text-2xl;
   }
 }
 </style>
