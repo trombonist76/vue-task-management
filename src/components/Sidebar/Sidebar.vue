@@ -1,4 +1,5 @@
 <script setup>
+import ButtonComp from '@/components/Button/Button.vue';
 import SidebarSwitch from './SidebarSwitch.vue';
 import SidebarBoard from './SidebarBoard.vue';
 import { useBoardStore } from "@/stores/use-board"
@@ -37,16 +38,16 @@ const isBoardActive = (board) => {
           :board="board" :isActive="isBoardActive" />
       </ul>
       <div class="pl-6 py-2 flex items-center gap-2 text-slate-400">
-        <span class="material-symbols-outlined w-5">list_alt</span>
-        <button class="text-primary font-medium">+Create New Board</button>
+        <ButtonComp class="text-primary" icon="list_alt" iconClass="text-secondary" iconFontSize="text-2xl" name="+ Create New Board"></ButtonComp>
       </div>
     </div>
     <div class="pl-4 mt-auto mb-7">
       <SidebarSwitch :isThemeLight="themeStore.isLight" :toggleTheme="themeStore.toggleTheme" />
-      <button @click="hidePanel" class="text-xs text-gray-400 font-semibold tracking-wide mt-4">
-        <font-awesome-icon class="mr-2" icon="fa-regular fa-eye-slash" />
-        Hide Sidebar
-      </button>
+      <ButtonComp @click="hidePanel" class="text-secondary text-xs tracking-wide font-bold px-1" btnGap="gap-3" icon="visibility_off" iconClass="text-secondary" iconFontSize="text-base" name="Hide Sidebar"></ButtonComp>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  
+</style>

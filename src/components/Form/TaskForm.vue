@@ -1,4 +1,5 @@
 <script setup>
+import ButtonComp from '@/components/Button/Button.vue';
 import { nanoid } from 'nanoid'
 import { reactive, ref } from 'vue'
 
@@ -22,7 +23,7 @@ const defaultSubtasks = ref(["e.g Make coffee", "e.g Drink coffee & smile"])
 
 const deleteSubtask = (index) => {
   defaultSubtasks.value.splice(index, 1)
-  newTask.subtasks.value.splice(index, 1)
+  newTask.subtasks.splice(index, 1)
 }
 
 const addSubtask = () => {
@@ -53,9 +54,7 @@ const addNewTask = () => {
         <div v-for="(subtask, index) in defaultSubtasks" class="flex">
           <FormKit type="text" :label="index === 0 && 'Subtasks'" :placeholder="subtask" :classes="formClass"
             outer-class="flex-1" />
-          <button @click="deleteSubtask(index)" class="ml-5 text-center">
-            <font-awesome-icon icon="fa-solid fa-xmark" />
-          </button>
+          <ButtonComp @click="deleteSubtask(index)" icon="close" iconClass="text-secondary" btnPadding="px-0"></ButtonComp>
         </div>
       </FormKit>
 

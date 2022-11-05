@@ -1,4 +1,5 @@
 <script setup>
+import ButtonComp from '@/components/Button/Button.vue';
 import { computed } from 'vue';
 
 const props = defineProps(["isThemeLight", "toggleTheme"])
@@ -16,11 +17,11 @@ const toggleThemeHandler = () => {
 <template>
   <div>
     <div class="bg-brand-dark py-3 flex gap-4 items-center justify-center rounded-md">
-      <font-awesome-icon class="w-4" icon="fa-regular fa-moon" />
+      <ButtonComp icon="dark_mode" iconClass="text-secondary" btnPadding="px-0"></ButtonComp>
       <button class="px-3 py-1 bg-primary rounded-full relative" @click="toggleThemeHandler">
         <span :class="animationClass" class="h-3 w-3 rounded-full flex bg-white transition-all delay-75"></span>
       </button>
-      <font-awesome-icon class="w-4" icon="fa-regular fa-sun" />
+      <ButtonComp icon="light_mode" iconClass="text-secondary" btnPadding="px-0"></ButtonComp>
     </div>
   </div>
 </template>
