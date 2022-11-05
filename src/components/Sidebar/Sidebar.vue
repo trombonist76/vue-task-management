@@ -2,7 +2,7 @@
 import ToggleInput from './ToggleInput.vue';
 import Board from './Board.vue';
 import { useBoardStore } from "@/stores/use-board"
-import { useThemeStore } from '@/stores/use-theme'
+import { useThemeStore } from "@/stores/use-theme"
 import { useMouse } from "@/composables/use-mouse"
 import { ref, computed, watch } from 'vue';
 

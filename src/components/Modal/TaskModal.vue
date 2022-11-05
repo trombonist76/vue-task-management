@@ -1,5 +1,5 @@
 <script setup>
-import TaskForm from './TaskForm.vue';
+import TaskForm from '../Form/TaskForm.vue';
 const props = defineProps(["toggleTaskModal", "isModalOpen"])
 </script>
 <template>

@@ -1,6 +1,6 @@
 <script setup>
-import HeaderPanel from '../Header/HeaderPanel.vue';
-import CreateTask from './CreateTask.vue';
+import HeaderPanel from '../Header/Header.vue';
+import TaskModal from '../Modal/TaskModal.vue';
 import Field from './Field.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useModalStore } from '@/stores/use-modal';
@@ -20,5 +20,5 @@ const fields = computed(() => bindColorsToStatus(colors, boardStore.activeBoard.
       <Field v-for="(field,index) in fields" :key="index" :field="field" :activeBoard="boardStore.activeBoard"/>
     </main>
   </div>
-  <CreateTask :toggleModal="modalStore.toggleModal" :isModalOpen="modalStore.isOpen"/>
+  <TaskModal :toggleModal="modalStore.toggleModal" :isModalOpen="modalStore.isOpen"/>
 </template>

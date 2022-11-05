@@ -35,7 +35,7 @@ const addNewTask = () => {
     ...newTask
   }
   activeTab.value.tasks.push(task)
-  toggleTaskModal()
+  props.toggleTaskModal()
 }
 </script>
 <template>
