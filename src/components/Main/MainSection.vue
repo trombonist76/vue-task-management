@@ -1,32 +1,24 @@
-<script>
+<script setup>
 import HeaderPanel from '../Header/HeaderPanel.vue';
-import Field from './Field.vue';
 import CreateTask from './CreateTask.vue';
-export default {
-  components: { HeaderPanel, Field, CreateTask },
-  inject:["activeTab"],
-  computed:{
-    fields(){
-      const colors = ['bg-blue-300','bg-primary','bg-green-300','bg-orange-300', 'bg-blue-500', 'bg-rose-500'].reverse()
-      const taskList = []
-      const fields = this.activeTab.value.tasks.reduce((uniqueTasks,task)=>{
-        if(!taskList.includes(task.status)){
-          taskList.push(task.status)
-          uniqueTasks.push({name:task.status,color:colors.pop()})
-        }
-        return uniqueTasks
-      },[])
-      return fields
-    }
-  }
-}
+import Field from './Field.vue';
+import { useBoardStore } from "@/stores/use-board"
+import { useModalStore } from '@/stores/use-modal';
+import { bindColorsToStatus } from "@/utils" 
+import { computed } from 'vue';
+
+const boardStore = useBoardStore()
+const modalStore = useModalStore()
+const colors = ['bg-blue-300','bg-primary','bg-green-300','bg-orange-300', 'bg-blue-500', 'bg-rose-500'].reverse()
+const fields = computed(() => bindColorsToStatus(colors, boardStore.activeBoard.tasks))
+
 </script>
 <template>
   <div class="flex-1 flex flex-col text-white">
-    <HeaderPanel/>
+    <HeaderPanel :toggleModal="modalStore.toggleModal"/>
     <main class="flex-1 bg-brand-dark px-7 py-4 flex gap-6">
-      <Field v-for="(field,index) in fields" :key="index" :field=field />
+      <Field v-for="(field,index) in fields" :key="index" :field="field" :activeBoard="boardStore.activeBoard"/>
     </main>
   </div>
-  <CreateTask/>
+  <CreateTask :toggleModal="modalStore.toggleModal" :isModalOpen="modalStore.isOpen"/>
 </template>
