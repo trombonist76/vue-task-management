@@ -2,7 +2,7 @@
   const props = defineProps(["name", "icon", "iconClass", "iconFontSize", "btnGap", "btnPadding"])
 
   const iconStyle = [
-      props.iconFontSize ? props.iconFontSize : "lg:text-lg",
+      props.iconFontSize ? props.iconFontSize : "text-lg",
       props.iconClass ? props.iconClass : ""
   ]
 
