@@ -17,11 +17,11 @@ const toggleThemeHandler = () => {
 <template>
   <div>
     <div class="bg-brand-dark py-3 flex gap-4 items-center justify-center rounded-md">
-      <ButtonComp icon="dark_mode" iconClass="text-secondary" btnPadding="px-0"></ButtonComp>
-      <button class="px-3 py-1 bg-primary rounded-full relative" @click="toggleThemeHandler">
+      <ButtonComp icon="dark_mode" iconClass="text-secondary" iconFontSize="text-xl" btnPadding="px-0"></ButtonComp>
+      <button class="mx-3 px-3 py-1 bg-primary rounded-full relative" @click="toggleThemeHandler">
         <span :class="animationClass" class="h-3 w-3 rounded-full flex bg-white transition-all delay-75"></span>
       </button>
-      <ButtonComp icon="light_mode" iconClass="text-secondary" btnPadding="px-0"></ButtonComp>
+      <ButtonComp icon="light_mode" iconClass="text-secondary" iconFontSize="text-xl" btnPadding="px-0"></ButtonComp>
     </div>
   </div>
 </template>
