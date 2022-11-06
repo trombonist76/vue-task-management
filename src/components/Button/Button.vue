@@ -1,11 +1,13 @@
 <script setup>
+import { computed } from 'vue';
+
   const props = defineProps(["name", "icon", "iconClass", "iconFontSize", "btnGap", "btnPadding"])
 
-  const iconStyle = [
+  const iconStyle = computed(() => ([
       props.iconFontSize ? props.iconFontSize : "text-lg",
       props.iconClass ? props.iconClass : ""
-  ]
-
+  ]))
+  
   const btnStyle = [
     props.btnGap ? props.btnGap : "gap-1",
     props.btnPadding ? props.btnPadding : "py-1 px-4 sm:py-2"
