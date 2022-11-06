@@ -2,12 +2,16 @@
 import Sidebar from "@/components/Sidebar/Sidebar.vue"
 import MainSection from '@/components/Main/MainSection.vue'
 import HeaderPanel from '@/components/Header/Header.vue';
+import { ref } from "vue";
+
+const isSidebarHiding = ref(false)
+
 </script>
 <template>
   <div class="app">
-    <HeaderPanel />
+    <HeaderPanel v-model:isSidebarHiding="isSidebarHiding"/>
     <div class="app__content">
-      <Sidebar />
+      <Sidebar v-model:isHiding="isSidebarHiding"/>
       <MainSection />
     </div>
   </div>
