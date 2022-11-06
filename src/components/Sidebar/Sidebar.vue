@@ -9,14 +9,14 @@ import { ref, computed, watch } from 'vue';
 
 const boardStore = useBoardStore()
 const themeStore = useThemeStore()
-const mouse = useMouse()
+const { mouse } = useMouse()
 const isVisible = ref(true)
 const visibilityClass = computed(() => ({
   "-translate-x-full": !isVisible.value,
 }))
 
-watch(() => mouse.x.value, () => {
-  if (mouse.x.value !== 0) return
+watch(() => mouse.x, () => {
+  if (mouse.x !== 0) return 
   isVisible.value = true
 })
 
