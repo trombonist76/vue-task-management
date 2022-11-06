@@ -5,29 +5,28 @@ import SidebarBoard from './SidebarBoard.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useThemeStore } from "@/stores/use-theme"
 import { useMouse } from "@/composables/use-mouse"
-import { ref, computed, watch } from 'vue';
+import { computed, watch } from 'vue';
+
+const props = defineProps(["isHiding"])
+const emits = defineEmits(["update:isHiding"])
 
 const boardStore = useBoardStore()
 const themeStore = useThemeStore()
-const { mouse } = useMouse()
-const isVisible = ref(true)
+const { mousePosition } = useMouse()
+
 const visibilityClass = computed(() => ({
-  "-translate-x-full": !isVisible.value,
+  "-translate-x-full": props.isHiding,
 }))
 
-watch(() => mouse.x, () => {
-  if (mouse.x !== 0) return 
-  isVisible.value = true
+const hidingHandler = () => {
+  if (props.isHiding) return
+  emits("update:isHiding", true)
+}
+
+watch(() => mousePosition.value, () => {
+  if (mousePosition.value !== 0) return
+  emits("update:isHiding", false)
 })
-
-const hidePanel = () => {
-  isVisible.value = !isVisible.value
-}
-
-const isBoardActive = (board) => {
-  const isActive = boardStore.activeBoard.id === board.id
-  return isActive
-}
 </script>
 <template>
   <div :class="visibilityClass" class="sidebar">
@@ -39,7 +38,7 @@ const isBoardActive = (board) => {
             @click="boardStore.changeActiveBoard(board)" 
             :key="board.id"
             :board="board" 
-            :isActive="isBoardActive(board)" />
+            :activeBoard="boardStore.activeBoard" />
         </ul>
         <div class="sidebar__btn">
           <ButtonComp 
@@ -52,7 +51,7 @@ const isBoardActive = (board) => {
       <div class="sidebar__footer">
         <SidebarSwitch :isThemeLight="themeStore.isLight" :toggleTheme="themeStore.toggleTheme" />
         <ButtonComp 
-          @click="hidePanel" 
+          @click="hidingHandler" 
           class="sidebar__btn--hide" 
           btnGap="gap-3" 
           icon="visibility_off"
@@ -67,7 +66,7 @@ const isBoardActive = (board) => {
 
 <style lang="scss" scoped>
 .sidebar {
-  @apply hidden md:flex md:fixed h-[calc(100%-95px)] bg-brand left-0 w-[300px] pr-7 pb-8 pt-4 flex-col border-r border-border transition-all duration-500;
+  @apply flex md:flex md:fixed h-[calc(100%-95px)] bg-brand left-0 w-[300px] pr-7 pb-8 pt-4 flex-col border-r border-border transition-all duration-500;
 
   &__title {
     @apply text-xs font-bold tracking-[2.4px] text-secondary mb-4 pl-8;

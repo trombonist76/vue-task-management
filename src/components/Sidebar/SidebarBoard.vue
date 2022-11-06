@@ -2,10 +2,11 @@
 import ButtonComp from '@/components/Button/Button.vue';
 import { computed } from 'vue';
 
-const props = defineProps(["board", "isActive"])
+const props = defineProps(["board", "activeBoard"])
+const isActive = computed(() => props.activeBoard.id === props.board.id)
 const classByActive = computed(() => ({
-  "bg-primary text-white": props.isActive,
-  "text-slate-400 hover:text-white hover:bg-primary-light": !props.isActive
+  "bg-primary text-white": isActive.value,
+  "text-slate-400 hover:text-white hover:bg-primary-light": !isActive.value
 }))
 
 </script>
