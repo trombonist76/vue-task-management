@@ -12,7 +12,7 @@ const themeStore = useThemeStore()
 const mouse = useMouse()
 const isVisible = ref(true)
 const visibilityClass = computed(() => ({
-  "w-0 overflow-hidden": !isVisible.value
+  "-translate-x-full": !isVisible.value,
 }))
 
 watch(() => mouse.x.value, () => {
@@ -29,25 +29,48 @@ const isBoardActive = (board) => {
 }
 </script>
 <template>
-  <div :class="visibilityClass"
-    class="w-1/3 md:w-1/6 text-white h-full pr-7 flex flex-col transition-all delay-150 border-r border-gray-700">
-    <h4 class="text-xs tracking-widest text-slate-400 mb-6 mt-24 pl-6">ALL BOARDS ({{ boardStore.boards.length }})</h4>
-    <div>
-      <ul>
-        <SidebarBoard @click="boardStore.changeActiveBoard(board)" v-for="board in boardStore.boards" :key="board.id"
-          :board="board" :isActive="isBoardActive" />
-      </ul>
-      <div class="pl-6 py-2 flex items-center gap-2 text-slate-400">
-        <ButtonComp class="text-primary" icon="list_alt" iconClass="text-secondary" iconFontSize="text-2xl" name="+ Create New Board"></ButtonComp>
+  <div :class="visibilityClass" class="sidebar">
+      <h4 class="sidebar__title">ALL BOARDS ({{ boardStore.boards.length }})</h4>
+      <div>
+        <ul>
+          <SidebarBoard @click="boardStore.changeActiveBoard(board)" v-for="board in boardStore.boards" :key="board.id"
+            :board="board" :isActive="isBoardActive" />
+        </ul>
+        <div class="sidebar__btn">
+          <ButtonComp class="sidebar__btn--add" icon="list_alt" iconFontSize="text-2xl" name="+ Create New Board">
+          </ButtonComp>
+        </div>
+      </div>
+      <div class="sidebar__footer">
+        <SidebarSwitch :isThemeLight="themeStore.isLight" :toggleTheme="themeStore.toggleTheme" />
+        <ButtonComp @click="hidePanel" class="sidebar__btn--hide" btnGap="gap-3" icon="visibility_off"
+          iconClass="text-secondary" iconFontSize="text-base" name="Hide Sidebar"></ButtonComp>
       </div>
     </div>
-    <div class="pl-4 mt-auto mb-7">
-      <SidebarSwitch :isThemeLight="themeStore.isLight" :toggleTheme="themeStore.toggleTheme" />
-      <ButtonComp @click="hidePanel" class="text-secondary text-xs tracking-wide font-bold px-1" btnGap="gap-3" icon="visibility_off" iconClass="text-secondary" iconFontSize="text-base" name="Hide Sidebar"></ButtonComp>
-    </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
-  
+.sidebar {
+  @apply hidden md:flex md:fixed bg-brand left-0 w-[300px] pr-7 flex-col border-r border-border transition-all duration-500;
+
+  &__title {
+    @apply text-xs tracking-widest text-secondary mb-6 mt-4 pl-6;
+  }
+
+  &__btn {
+    @apply pl-6 py-2;
+
+    &--add {
+      @apply text-primary gap-2 font-bold;
+    }
+
+    &--hide {
+      @apply text-secondary text-xs tracking-wide px-1 font-bold;
+    }
+  }
+
+  &__footer {
+    @apply pl-4 mt-auto mb-7;
+  }
+}
 </style>
