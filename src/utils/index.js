@@ -113,3 +113,7 @@ export function bindColorsToStatus(colors, tasks){
   }))
   return colorBindedStatusArr
 }
+
+export function delay(ms){
+  return new Promise(res => setTimeout(res, ms))
+}

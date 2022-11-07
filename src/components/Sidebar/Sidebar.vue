@@ -5,31 +5,33 @@ import SidebarBoard from './SidebarBoard.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useThemeStore } from "@/stores/use-theme"
 import { useMouse } from "@/composables/use-mouse"
-import { computed, watch } from 'vue';
-
-const props = defineProps(["isHiding"])
-const emits = defineEmits(["update:isHiding"])
+import { useMobile } from "@/composables/use-mobile"
+import { computed, ref, watch } from 'vue';
 
 const boardStore = useBoardStore()
 const themeStore = useThemeStore()
 const { mousePosition } = useMouse()
+const { isMobile } = useMobile()
 
-const visibilityClass = computed(() => ({
-  "-translate-x-full": props.isHiding,
+const isHiding = ref(false)
+
+const slideClass = computed(() => ({
+  "sidebar--slide-left": isHiding.value,
 }))
 
 const hidingHandler = () => {
-  if (props.isHiding) return
-  emits("update:isHiding", true)
+  if (isHiding.value) return
+  isHiding.value = true
 }
 
 watch(() => mousePosition.value, () => {
   if (mousePosition.value !== 0) return
-  emits("update:isHiding", false)
+  isHiding.value = false
 })
+
 </script>
 <template>
-  <div :class="visibilityClass" class="sidebar">
+    <div :class="slideClass" ref="sidebarRef" class="sidebar" >
       <h4 class="sidebar__title">ALL BOARDS ({{ boardStore.boards.length }})</h4>
       <div class="sidebar__content">
         <ul>
@@ -51,6 +53,7 @@ watch(() => mousePosition.value, () => {
       <div class="sidebar__footer">
         <SidebarSwitch :isThemeLight="themeStore.isLight" :toggleTheme="themeStore.toggleTheme" />
         <ButtonComp 
+          v-if="!isMobile"
           @click="hidingHandler" 
           class="sidebar__btn--hide" 
           btnGap="gap-3" 
@@ -66,7 +69,15 @@ watch(() => mousePosition.value, () => {
 
 <style lang="scss" scoped>
 .sidebar {
-  @apply flex md:flex md:fixed h-[calc(100%-95px)] bg-brand left-0 w-[300px] pr-7 pb-8 pt-4 flex-col border-r border-border transition-all duration-500;
+  @apply flex h-5/6 md:flex md:fixed md:mt-0 md:h-[calc(100%-95px)] bg-brand left-0 w-[300px] pr-7 pb-8 pt-4 flex-col border-r border-border transition-all duration-500;
+
+  &--hidden{
+    @apply hidden
+  }
+
+  &--slide-left{
+    @apply -translate-x-full
+  }
 
   &__title {
     @apply text-xs font-bold tracking-[2.4px] text-secondary mb-4 pl-8;

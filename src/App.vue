@@ -1,17 +1,23 @@
 <script setup>
-import Sidebar from "@/components/Sidebar/Sidebar.vue"
 import MainSection from '@/components/Main/MainSection.vue'
 import HeaderPanel from '@/components/Header/Header.vue';
-import { ref } from "vue";
+import Sidebar from "@/components/Sidebar/Sidebar.vue"
+import Modal from "@/components/Modal/Modal.vue";
+import { useMobile } from "@/composables/use-mobile"
+import { computed, ref } from "vue";
+import ModalSidebar from './components/Modal/ModalSidebar.vue';
 
-const isSidebarHiding = ref(false)
-
+const { isMobile } = useMobile()
+const renderComponent = computed(() => isMobile.value ? ModalSidebar : Sidebar)
 </script>
+
 <template>
   <div class="app">
     <HeaderPanel v-model:isSidebarHiding="isSidebarHiding"/>
     <div class="app__content">
-      <Sidebar v-model:isHiding="isSidebarHiding"/>
+      <Teleport to="#modal-container" :disabled="!isMobile">
+        <component :is="renderComponent"></component>
+      </Teleport>
       <MainSection />
     </div>
   </div>

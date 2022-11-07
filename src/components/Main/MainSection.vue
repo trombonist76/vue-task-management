@@ -2,12 +2,11 @@
 import TaskModal from '../Modal/TaskModal.vue';
 import Field from './Field.vue';
 import { useBoardStore } from "@/stores/use-board"
-import { useModalStore } from '@/stores/use-modal';
 import { bindColorsToStatus } from "@/utils" 
 import { computed } from 'vue';
 
 const boardStore = useBoardStore()
-const modalStore = useModalStore()
+// const modalStore = useModalStore()
 const colors = ['bg-blue-300','bg-primary','bg-green-300','bg-orange-300', 'bg-blue-500', 'bg-rose-500'].reverse()
 const fields = computed(() => bindColorsToStatus(colors, boardStore.activeBoard.tasks))
 
@@ -18,5 +17,5 @@ const fields = computed(() => bindColorsToStatus(colors, boardStore.activeBoard.
       <Field v-for="(field,index) in fields" :key="index" :field="field" :activeBoard="boardStore.activeBoard"/>
     </main>
   </div>
-  <TaskModal :toggleModal="modalStore.toggleModal" :isModalOpen="modalStore.isOpen"/>
+  <!-- <TaskModal :toggleModal="modalStore.toggleModal" :isModalOpen="modalStore.isOpen"/> -->
 </template>

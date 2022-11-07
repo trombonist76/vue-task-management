@@ -1,14 +1,13 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
-export function useClickOnTarget(targetRef) {
-  const isClickedOutside = ref(false)
+export function useClickOutside(targetRef, callback) {
 
   function clickHandler(event) {
-    isClickedOutside.value = !targetRef.value.contains(event.target)
+    if (targetRef.value?.contains(event.target)) return
+    callback()
   }
 
   onMounted(() => window.addEventListener('click', clickHandler))
   onUnmounted(() => window.removeEventListener('click', clickHandler))
 
-  return isClickedOutside
 }
