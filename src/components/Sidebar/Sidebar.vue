@@ -4,29 +4,24 @@ import SidebarSwitch from './SidebarSwitch.vue';
 import SidebarBoard from './SidebarBoard.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useThemeStore } from "@/stores/use-theme"
+import { useSidebarStore } from '@/stores/use-sidebar';
 import { useMouse } from "@/composables/use-mouse"
 import { useMobile } from "@/composables/use-mobile"
 import { computed, ref, watch } from 'vue';
 
 const boardStore = useBoardStore()
 const themeStore = useThemeStore()
+const sidebarStore = useSidebarStore()
 const { mousePosition } = useMouse()
 const { isMobile } = useMobile()
 
-const isHiding = ref(false)
-
 const slideClass = computed(() => ({
-  "sidebar--slide-left": isHiding.value,
+  "sidebar--slide-left": sidebarStore.isSidebarHiding,
 }))
-
-const hidingHandler = () => {
-  if (isHiding.value) return
-  isHiding.value = true
-}
 
 watch(() => mousePosition.value, () => {
   if (mousePosition.value !== 0) return
-  isHiding.value = false
+  sidebarStore.showSidebar()
 })
 
 </script>
@@ -54,7 +49,7 @@ watch(() => mousePosition.value, () => {
         <SidebarSwitch :isThemeLight="themeStore.isLight" :toggleTheme="themeStore.toggleTheme" />
         <ButtonComp 
           v-if="!isMobile"
-          @click="hidingHandler" 
+          @click="() => sidebarStore.hideSidebar()" 
           class="sidebar__btn--hide" 
           btnGap="gap-3" 
           icon="visibility_off"
@@ -69,7 +64,7 @@ watch(() => mousePosition.value, () => {
 
 <style lang="scss" scoped>
 .sidebar {
-  @apply flex h-5/6 md:flex md:fixed md:mt-0 md:h-[calc(100%-95px)] bg-brand left-0 w-[300px] pr-7 pb-8 pt-4 flex-col border-r border-border transition-all duration-500;
+  @apply flex z-10 font-bold h-5/6 md:flex md:fixed md:mt-0 md:h-[calc(100%-95px)] bg-brand left-0 w-[300px] pr-7 pb-8 pt-4 flex-col border-r border-border transition-all duration-500;
 
   &--hidden{
     @apply hidden

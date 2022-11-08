@@ -2,7 +2,7 @@
 import ButtonComp from "@/components/Button/Button.vue"
 import HeaderLogo from "@/components/Header/HeaderLogo.vue"
 import HeaderButtons from "@/components/Header/HeaderButtons.vue"
-import { useSidebarModal } from "@/stores/use-modal"
+import { useSidebarStore } from "@/stores/use-sidebar"
 import { useBoardStore } from "@/stores/use-board"
 import { useMobile } from '@/composables/use-mobile'
 import { delay } from "@/utils"
@@ -10,13 +10,13 @@ import { delay } from "@/utils"
 const props = defineProps(["isSidebarHiding"])
 const emits = defineEmits(["update:isSidebarHiding","toggleSidebar"])
 
-const sidebarModal = useSidebarModal()
+const sidebarStore = useSidebarStore()
 const boardStore = useBoardStore()
 const { isMobile } = useMobile()
 
 const toggleSidebarHandler = async () => {
   await delay(150)
-  sidebarModal.toggle()
+  sidebarStore.toggleModal()
 }
 
 </script>

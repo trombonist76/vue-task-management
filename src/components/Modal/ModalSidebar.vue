@@ -1,15 +1,15 @@
 <script setup>
 import Sidebar from '@/components/Sidebar/Sidebar.vue';
 import Modal from '@/components/Modal/Modal.vue';
-import { useSidebarModal } from "@/stores/use-modal"
+import { useSidebarStore } from "@/stores/use-sidebar"
   
-  const sidebarModal = useSidebarModal()
+  const sidebarStore = useSidebarStore()
   const clickedOutsideHandler =  () => {
-    sidebarModal.hide()
+    sidebarStore.closeModal()
   }
 </script>
 <template>
-  <Modal :isOpen="sidebarModal.isOpen" @clickedOutside="clickedOutsideHandler">
+  <Modal :isOpen="sidebarStore.isModalOpen" @clickedOutside="clickedOutsideHandler">
     <Sidebar></Sidebar>
   </Modal>
 </template>

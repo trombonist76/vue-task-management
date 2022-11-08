@@ -10,4 +10,5 @@ html,body,#app{
 
 #modal-container{
   position: absolute;
+  z-index: 1;
 }
