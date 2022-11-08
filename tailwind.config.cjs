@@ -16,7 +16,8 @@ module.exports = {
           "light":"#A8A4FF"
         },
         "secondary":{
-          DEFAULT: "#828FA3"
+          DEFAULT: "#828FA3",
+          "dark": "#798493"
         },
         "border": {
           DEFAULT: "#3E3F4E"
