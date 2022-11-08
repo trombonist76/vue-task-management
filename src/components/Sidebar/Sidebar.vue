@@ -7,7 +7,7 @@ import { useThemeStore } from "@/stores/use-theme"
 import { useSidebarStore } from '@/stores/use-sidebar';
 import { useMouse } from "@/composables/use-mouse"
 import { useMobile } from "@/composables/use-mobile"
-import { computed, ref, watch } from 'vue';
+import { computed, watch } from 'vue';
 
 const boardStore = useBoardStore()
 const themeStore = useThemeStore()
