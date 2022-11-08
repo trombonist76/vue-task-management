@@ -1,115 +1,220 @@
-export function getBoards(){
-  const boards =  [
-    {
-      id:1,
-      title:"Platform Launch",
-      tasks:[
-        {
-          id:1,
-          title:"Markete Git",
-          status:"Todo"
-        },
-        {
-          id:2,
-          title:"Ekmek Al",
-          status:"Todo"
-        },
-        {
-          id:3,
-          title:"Domates Al",
-          status:"Done"
-        },           
-        {
-          id:4,
-          title:"Biber Al",
-          status:"Done"
-        },
-        {
-          id:5,
-          title:"123",
-          status:"Done"
-        },
-        {
-          id:6,
-          title:"3456",
-          status:"Todo"
-        },
-        {
-          id:7,
-          title:"trade some btc",
-          status:"Doing"
-        },
-        {
-          id:8,
-          title:"complete last project",
-          status:"Doing"
-        },
-        {
-          id:9,
-          title:"learn vue",
-          status:"Doing"
-        }
-      ]
-    },
-    {
-      id:2,
-      title:"Marketing Plan",
-      tasks:[
-        {
-          id:1,
-          title:"Markete Git",
-          status:"Doing"
-        },
-        {
-          id:2,
-          title:"Ekmek Al",
-          status:"Doing"
-        },
-        {
-          id:3,
-          title:"Domates Al",
-          status:"Doing"
-        },           
-        {
-          id:4,
-          title:"Biber Al",
-          status:"Todo"
-        },
-        {
-          id:4,
-          title:"Karpuz Al",
-          status:"Done"
-        }
-      ]
-    }
-  ]
+export function getBoards() {
+  // const boards =  [
+  //   {
+  //     id:1,
+  //     title:"Platform Launch",
+  //     fields: [
+  //       {
+  //         id: 1,
+  //         status: "Doing",
+  //         color: "bg-rose-500",
+  //       },
+  //       {
+  //         id: 2,
+  //         status: "Todo",
+  //         color: "bg-blue-300",
+  //       }
+  //     ],
 
-  return boards
-}
+  //     tasks: [
+  //       {
+  //         id:1,
+  //         title:"trade some btc",
+  //         order: 1,
+  //         fieldId: 1
+  //       },
+  //       {
+  //         id:2,
+  //         title:"complete last project",
+  //         order: 2,
+  //         fieldId: 1
+  //       },
+  //       {
+  //         id:3,
+  //         title:"learn vue",
+  //         order: 3,
+  //         fieldId: 1
+  //       },
+  //       {
+  //         id:4,
+  //         title:"Markete Git",
+  //         order: 4,
+  //         fieldId: 2
+  //       },
+  //       {
+  //         id:5,
+  //         title:"Ekmek Al",
+  //         order: 5,
+  //         fieldId: 2
+  //       },
+  //       {
+  //         id:6,
+  //         title:"3456",
+  //         order: 6,
+  //         fieldId: 2
+  //       },
+  //     ]
+  //   },
 
-export function getUniqueStatus(tasks, filterBy = ( task ) => task.status){
-  const taskStatus = tasks.map((task) => filterBy(task))
-  const uniqueStatus = [...new Set(taskStatus)]
-  return uniqueStatus
+  //   {
+  //     id:2,
+  //     title:"Marketing Plan",
+  //     fields: [
+  //       {
+  //         id: 1,
+  //         status: "Doing",
+  //         color: "bg-rose-500",
+  //       },
+  //       {
+  //         id: 2,
+  //         status: "Todo",
+  //         color: "bg-blue-300",
+  //       },
+  //       {
+  //         id: 3,
+  //         status: "Done",
+  //         color: "bg-green-300",
+  //       }
+  //     ],
 
-  // tasks.reduce((uniqueTasks, task) => {
-  //   if(taskList.includes(task.status)) return
-  //   taskList.push(task.status)
-  //   const newStatus = {
-  //     name: task.status,
-  //     color: colors.pop()
+  //     tasks: [
+  //         {
+  //           id: 1,
+  //           title: "Markete Git",
+  //           fieldId: 1
+  //         },
+  //         {
+  //           id: 2,
+  //           title: "Ekmek Al",
+  //           fieldId: 1
+  //         },
+  //         {
+  //           id: 3,
+  //           title: "Domates Al",
+  //           fieldId: 1
+  //         },
+
+  //         {
+  //           id: 4,
+  //           title: "Biber Al",
+  //           fieldId: 2
+  //         },
+
+  //         {
+  //           id: 5,
+  //           title: "Karpuz Al",
+  //           fieldId: 3
+  //         }
+  //     ]
   //   }
-  //   uniqueTasks.push(newStatus)
-  //   return uniqueTasks
-  // }, [])
+  // ]
+
+  const boards = [
+    {
+      id: 1,
+      title: "Platform Launch",
+      fields: {
+        doing: {
+          id: 1,
+          status: "Doing",
+          color: "bg-rose-500",
+          tasks: [
+            {
+              id: 1,
+              title: "trade some btc",
+              order: 1,
+            },
+            {
+              id: 2,
+              title: "complete last project",
+              order: 2,
+            },
+            {
+              id: 3,
+              title: "learn vue",
+              order: 3,
+            },
+          ],
+        },
+
+        todo: {
+          id: 2,
+          status: "Todo",
+          color: "bg-blue-300",
+          tasks: [
+            {
+              id: 1,
+              title: "Markete Git",
+              order: 4,
+            },
+            {
+              id: 2,
+              title: "Ekmek Al",
+              order: 5,
+            },
+            {
+              id: 3,
+              title: "3456",
+              order: 6,
+            },
+          ],
+        },
+
+        completed: {
+          id: 2,
+          status: "Todo",
+          color: "bg-blue-300",
+          tasks: [
+            {
+              id: 1,
+              title: "A görevi",
+              order: 7,
+            },
+            {
+              id: 2,
+              title: "B görevi",
+              order: 8,
+            },
+            {
+              id: 3,
+              title: "C görevi",
+              order: 9,
+            },
+            {
+              id: 4,
+              title: "D görevi",
+              order: 9,
+            },
+            {
+              id: 5,
+              title: "E görevi",
+              order: 9,
+            },
+          ],
+        },
+      },
+    },
+  ];
+
+  return boards;
 }
 
-export function bindColorsToStatus(colors, tasks){
-  console.log('tasks', tasks)
-  const uniqueStatus = getUniqueStatus(tasks)
-  const colorBindedStatusArr = uniqueStatus.map(status => ({
+export function getUniqueStatus(tasks, filterBy = (task) => task.status) {
+  const taskStatus = tasks.map((task) => filterBy(task));
+  const uniqueStatus = [...new Set(taskStatus)];
+  return uniqueStatus;
+}
+
+export function bindColorsToStatus(colors, tasks) {
+  const uniqueStatus = getUniqueStatus(tasks);
+  const colorBindedStatusArr = uniqueStatus.map((status, index) => ({
+    id: index + 1,
     name: status,
-    color: colors.pop()
-  }))
-  return colorBindedStatusArr
+    color: colors.pop(),
+  }));
+  return colorBindedStatusArr;
+}
+
+export function delay(ms) {
+  return new Promise((res) => setTimeout(res, ms));
 }

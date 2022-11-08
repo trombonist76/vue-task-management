@@ -1,5 +1,6 @@
 <script setup>
-import TaskForm from '../Form/TaskForm.vue';
+import ButtonComp from '@/components/Button/Button.vue';
+import TaskForm from '@/components/Form/TaskForm.vue';
 const props = defineProps(["toggleTaskModal", "isModalOpen"])
 </script>
 <template>
@@ -8,7 +9,7 @@ const props = defineProps(["toggleTaskModal", "isModalOpen"])
     <div class="bg-brand m-auto p-5 w-1/2 flex flex-col gap-4">
       <div class="flex justify-between items-center">
         <h4>Add New Task</h4>
-        <button class="button small" title="Close" @click="props.toggleTaskModal"><font-awesome-icon icon="fa-solid fa-xmark" /></button>
+        <ButtonComp @click="props.toggleTaskModal" icon="close" iconClass="text-secondary" btnPadding="px-0"></ButtonComp>
       </div>
       <TaskForm :toggleTaskModal="toggleTaskModal"/>
     </div>

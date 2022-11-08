@@ -10,11 +10,13 @@ export const useBoardStore = defineStore("board", {
   actions: {
     changeActiveBoard(board){
       this.activeBoardId = board.id
-    }
+    },
+
+    getActiveBoard(){
+      return this.boards.find((board) => board.id === this.activeBoardId)
+    },
   },
 
   getters: {
-    activeBoard: (state) =>
-      state.boards.find((board) => board.id === state.activeBoardId),
-  },
+    activeBoard: (state) => state.getActiveBoard()}
 });

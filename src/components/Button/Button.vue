@@ -1,20 +1,29 @@
 <script setup>
-  const props = defineProps(["name", "icon"])
+import { computed } from 'vue';
+
+  const props = defineProps(["name", "icon", "iconClass", "iconFontSize", "btnGap", "btnPadding"])
+
+  const iconStyle = computed(() => ([
+      props.iconFontSize ? props.iconFontSize : "text-lg",
+      props.iconClass ? props.iconClass : ""
+  ]))
+  
+  const btnStyle = [
+    props.btnGap ? props.btnGap : "gap-1",
+    props.btnPadding ? props.btnPadding : "py-1 px-4 sm:py-2"
+  ]
+
 </script>
 
 <template>
-  <button class="btn">
-    <span v-if="props.icon" class="material-symbols-outlined btn__icon">{{props.icon}}</span>
+  <button class="btn" :class="btnStyle">
+    <span v-if="props.icon" :class="iconStyle" class="material-symbols-outlined btn__icon">{{props.icon}}</span>
     {{props.name}}
   </button>
 </template>
 
 <style lang="scss" scoped>
   .btn{
-    @apply text-sm flex justify-center items-center rounded-full px-4 py-2 gap-1;
-
-    &__icon{
-      @apply text-base
-    }
+    @apply flex items-center rounded-full;
   }
 </style>
