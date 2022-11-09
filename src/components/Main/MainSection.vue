@@ -1,5 +1,4 @@
 <script setup>
-import TaskModal from '../Modal/TaskModal.vue';
 import FieldBlank from '@/components/Field/FieldBlank.vue';
 import Field from '@/components/Field/Field.vue';
 import { useBoardStore } from "@/stores/use-board"
@@ -10,11 +9,10 @@ import { computed } from 'vue';
 const boardStore = useBoardStore()
 const sidebarStore = useSidebarStore()
 const { isMobile } = useMobile()
-// const modalStore = useModalStore()
+
 const widthClass = computed(() => ({
   "fields-wrapper--full": sidebarStore.isSidebarHiding || isMobile.value,
 }))
-
 
 </script>
 <template>
@@ -30,7 +28,6 @@ const widthClass = computed(() => ({
       <FieldBlank></FieldBlank>
     </ul>
   </main>
-  <!-- <TaskModal :toggleModal="modalStore.toggleModal" :isModalOpen="modalStore.isOpen"/> -->
 </template>
 
 <style lang="scss" scoped>

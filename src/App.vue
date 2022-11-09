@@ -1,13 +1,20 @@
 <script setup>
 import MainSection from '@/components/Main/MainSection.vue'
+import ModalSidebar from '@/components/Modal/ModalSidebar.vue';
+import Modal from '@/components/Modal/Modal.vue';
 import HeaderPanel from '@/components/Header/Header.vue';
 import Sidebar from "@/components/Sidebar/Sidebar.vue"
-import ModalSidebar from '@/components/Modal/ModalSidebar.vue';
 import { useMobile } from "@/composables/use-mobile"
+import { useModalStore } from '@/stores/use-modal';
 import { computed } from "vue";
 
 const { isMobile } = useMobile()
+const modalStore = useModalStore()
 const renderComponent = computed(() => isMobile.value ? ModalSidebar : Sidebar)
+
+const closeModalHandler = () => {
+  modalStore.closeModal()
+}
 </script>
 
 <template>
@@ -20,6 +27,10 @@ const renderComponent = computed(() => isMobile.value ? ModalSidebar : Sidebar)
       <MainSection />
     </div>
   </div>
+
+  <Teleport to="#modal-container">
+    <Modal :modalComponent="modalStore.activeModal" :isOpen="modalStore.activeModal" @clickedOutside="closeModalHandler"></Modal>
+  </Teleport>
 </template>
 
 <style lang="scss" scoped>

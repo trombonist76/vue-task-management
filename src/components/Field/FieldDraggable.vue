@@ -1,10 +1,9 @@
 <script setup>
 import { ref } from "vue";
 import draggable from "vuedraggable"
-import Task from '../Main/Task.vue';
+import FieldTask from './FieldTask.vue';
 
 const props = defineProps(["tasks"])
-const tasksProp = ref(props.tasks)
 const drag = ref(false)
 const dragOptions = ref({
     animation: 200,
@@ -13,9 +12,10 @@ const dragOptions = ref({
     ghostClass: "ghost"
 })
 
-const handler = (birsey) => {
-  console.log('birsey', birsey)
+const clickHandler = () => {
+  console.log("clicked");
 }
+
 </script>
 
 <template>
@@ -34,7 +34,7 @@ const handler = (birsey) => {
     itemKey="item"
   >
     <template #item="{ element }">
-      <Task class="tasks__task" :task="element"></Task>
+      <FieldTask @click="clickHandler" class="tasks__task" :task="element"></FieldTask>
     </template>
   </draggable>
 </template>

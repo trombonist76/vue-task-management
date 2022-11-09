@@ -4,6 +4,7 @@ import HeaderLogo from "@/components/Header/HeaderLogo.vue"
 import HeaderButtons from "@/components/Header/HeaderButtons.vue"
 import { useSidebarStore } from "@/stores/use-sidebar"
 import { useBoardStore } from "@/stores/use-board"
+import { useModalStore } from "@/stores/use-modal"
 import { useMobile } from '@/composables/use-mobile'
 import { delay } from "@/utils"
 
@@ -12,6 +13,7 @@ const emits = defineEmits(["update:isSidebarHiding","toggleSidebar"])
 
 const sidebarStore = useSidebarStore()
 const boardStore = useBoardStore()
+const modalStore = useModalStore()
 const { isMobile } = useMobile()
 
 const toggleSidebarHandler = async () => {
@@ -26,7 +28,7 @@ const toggleSidebarHandler = async () => {
     <div class="header__content">
       <h1 class="header__title">{{ boardStore.activeBoard.title }}</h1>
       <ButtonComp v-if="isMobile" @click="toggleSidebarHandler" icon="expand_more"></ButtonComp>
-      <HeaderButtons></HeaderButtons>
+      <HeaderButtons :openModal="modalStore.setActiveModal"></HeaderButtons>
     </div>
   </div>
 </template>

@@ -1,18 +1,38 @@
 <script setup>
 import { useClickOutside } from "@/composables/use-clickOutside"
-import { ref } from 'vue';
+import { ref, defineAsyncComponent, useSlots } from 'vue';
+
 
 const emits = defineEmits(["clickedOutside"])
-const props = defineProps(["isOpen"])
+const props = defineProps(["isOpen", "modalComponent"])
+const slots = useSlots()
+const slotRef = ref(null) //template ref
 const contentRef = ref(null) //template ref
-useClickOutside(contentRef, () => {
+
+const ModalComponent = defineAsyncComponent(() =>
+  import(`./TaskModal.vue`)
+)
+
+useClickOutside(slotRef, () => {
+  if(!slots.default) return
   emits("clickedOutside")
 })
+
+useClickOutside(contentRef, () => {
+  console.log("isOpen", props.isOpen);
+  if(!props.isOpen) return
+  console.log("girdi");
+  emits("clickedOutside")
+})
+
 </script>
 <template>
   <Transition name="fade">
     <div class="modal" v-show="props.isOpen">
-        <slot ref="contentRef"></slot>
+        <slot v-if="!props.modalComponent" ref="slotRef"></slot>
+        <div v-else ref="contentRef">
+          <ModalComponent ></ModalComponent>
+        </div>
       </div>
   </Transition>
 </template>

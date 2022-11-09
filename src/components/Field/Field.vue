@@ -6,7 +6,7 @@ const props = defineProps(["field"])
 <template>
   <div class="field drop-zone">
     <div class="field__header">
-      <span :class="props.field.status" class="field__circle"></span>
+      <span :class="props.field.color" class="field__circle"></span>
       {{ props.field.status.toUpperCase() }} ({{ props.field.tasks.length }})
     </div>
     <FieldDraggable :tasks="props.field.tasks"></FieldDraggable>
