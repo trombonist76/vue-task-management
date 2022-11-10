@@ -37,6 +37,10 @@ const inputHandler = (event) => {
   emits("update:modelValue", userInput.value)
   emits("update:isValid", !errorMessage.value)
 }
+
+const deleteHandler = () => {
+  emits("delete")
+}
 </script>
 
 <template>
@@ -47,7 +51,7 @@ const inputHandler = (event) => {
         <component :is="props.inputType" rows="4" :class="inputClass" class="input__input" :value="userInput" @input="inputHandler" type="text"/>
         <span v-if="props.showError" class="input__message input__message--error">{{errorMessage}}</span>
       </label>
-      <ButtonComp v-if="props.deleteButton" icon="close" iconClass="text-secondary text-xl font-bold" btnPadding="p-0"></ButtonComp>
+      <ButtonComp v-show="props.deleteButton" @click="deleteHandler" icon="close" iconClass="text-secondary text-xl font-bold" btnPadding="p-0"></ButtonComp>
     </div>
   </div>
 </template>

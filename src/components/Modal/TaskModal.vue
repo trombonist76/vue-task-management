@@ -7,7 +7,6 @@ const props = defineProps(["toggleTaskModal", "isModalOpen"])
     <div class="new-task">
       <div class="new-task__header">
         <h4>Add New Task</h4>
-        <ButtonComp @click="props.toggleTaskModal" icon="close" iconClass="text-secondary" btnPadding="px-0"></ButtonComp>
       </div>
       <TaskForm :toggleTaskModal="props.toggleTaskModal"/>
     </div>

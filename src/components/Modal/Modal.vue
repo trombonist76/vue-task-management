@@ -19,9 +19,7 @@ useClickOutside(slotRef, () => {
 })
 
 useClickOutside(contentRef, () => {
-  console.log("isOpen", props.isOpen);
   if(!props.isOpen) return
-  console.log("girdi");
   emits("clickedOutside")
 })
 

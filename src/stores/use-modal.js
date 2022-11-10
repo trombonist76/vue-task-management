@@ -12,7 +12,6 @@ export const useModalStore = defineStore("modal", {
     },
 
     closeModal(){
-      console.log("deactive")
       this.activeModal = ""
     }
   },
