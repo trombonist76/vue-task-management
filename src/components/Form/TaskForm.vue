@@ -62,8 +62,7 @@ const validateFormHandler = () => {
 }
 </script>
 <template>
-  <div class="form">
-    {{boardStore.boardFields}}
+  <div class="task-form">
     <InputComp 
       label="Title"
       placeholder="e.g Take coffee break."
@@ -96,7 +95,7 @@ const validateFormHandler = () => {
     <ButtonComp
       @click="addSubtaskHandler"
       name="+ Add New Subtask" 
-      class="form__button form__button--add-subtask">
+      class="task-form__button task-form__button--add-subtask">
     </ButtonComp>
 
     <InputSelect 
@@ -111,13 +110,13 @@ const validateFormHandler = () => {
     <ButtonComp
       @click="validateFormHandler"
       name="Create Task" 
-      class="form__button form__button--submit">
+      class="task-form__button task-form__button--submit">
     </ButtonComp>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .form{
+  .task-form{
     @apply flex flex-col gap-4 font-bold;
 
     &__button{
