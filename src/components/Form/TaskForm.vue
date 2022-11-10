@@ -1,8 +1,8 @@
 <script setup>
 import ButtonComp from '@/components/Button/Button.vue';
-import InputComp from './Input.vue';
-import InputGroup from './InputGroup.vue';
-import InputSelect from './InputSelect.vue';
+import InputComp from '@/components/Input/Input.vue';
+import InputGroup from '@/components/Input/InputGroup.vue';
+import InputSelect from '@/components/Input/InputSelect.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useModalStore } from "@/stores/use-modal"
 import { nanoid } from 'nanoid'
