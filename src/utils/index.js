@@ -53,7 +53,7 @@ export function getBoards() {
 
         completed: {
           id: 2,
-          status: "Todo",
+          status: "Completed",
           color: "bg-blue-300",
           tasks: [
             {
@@ -184,7 +184,7 @@ export function formToData(form){
 
     const itemsInArray = formValue.map((item) => {
       delete item.isValid
-      return subtask
+      return item
     })
 
     dataObj[formField] = itemsInArray

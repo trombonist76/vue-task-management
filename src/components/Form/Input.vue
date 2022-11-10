@@ -2,9 +2,9 @@
 import ButtonComp from "@/components/Button/Button.vue"
 import { computed, ref } from "vue";
 const props = defineProps({
-  label: String, value: String, required: Boolean, 
+  label: String, value: String, required: Boolean,
   deleteButton: Boolean, itemKey: Function, 
-  showError: Boolean, itemList: Array,
+  showError: Boolean, itemList: Array, placeholder: String,
   inputType: { type: String, default: "input"},
   errorMessages: {type: Object, default: { used: "Used", required: "Required"}}
 })
@@ -48,7 +48,7 @@ const deleteHandler = () => {
     <div class="input__label">{{ props.label }}</div>
     <div class="input__body">
       <label :class="errorClass" class="input__box">
-        <component :is="props.inputType" rows="4" :class="inputClass" class="input__input" :value="userInput" @input="inputHandler" type="text"/>
+        <component :is="props.inputType" :placeholder="props.placeholder" rows="4" :class="inputClass" class="input__input" :value="userInput" @input="inputHandler" type="text"/>
         <span v-if="props.showError" class="input__message input__message--error">{{errorMessage}}</span>
       </label>
       <ButtonComp v-show="props.deleteButton" @click="deleteHandler" icon="close" iconClass="text-secondary text-xl font-bold" btnPadding="p-0"></ButtonComp>
@@ -69,7 +69,7 @@ const deleteHandler = () => {
   }
 
   &__box {
-    @apply flex-1 flex items-center pr-2 bg-brand rounded text-sm border-2 border-secondary-dark focus-within:border-primary transition-all duration-200;
+    @apply flex-1 flex items-center pr-2 bg-brand rounded text-sm border border-secondary-dark focus-within:border-primary transition-all duration-200;
 
     &--error {
       @apply border-red-400 focus-within:border-red-400;
@@ -77,7 +77,7 @@ const deleteHandler = () => {
   }
 
   &__input {
-    @apply flex-1 px-4 py-2 bg-transparent outline-none resize-none;
+    @apply flex-1 px-4 py-2 bg-transparent outline-none resize-none placeholder:leading-relaxed placeholder:text-xs placeholder:text-secondary placeholder:text-opacity-60;
   }
 
   &__message {

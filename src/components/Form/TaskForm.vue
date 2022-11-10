@@ -3,14 +3,15 @@ import ButtonComp from '@/components/Button/Button.vue';
 import InputComp from './Input.vue';
 import InputGroup from './InputGroup.vue';
 import InputSelect from './InputSelect.vue';
+import { useBoardStore } from "@/stores/use-board"
 import { nanoid } from 'nanoid'
 import { reactive, ref, computed } from 'vue'
 import { delay, formToData, validateForm } from '@/utils'
 
-const props = defineProps(["toggleTaskModal"])
+const boardStore = useBoardStore()
 const showErrors = ref(false)
 const isFormValid = computed(() => Object.values(validateForm(taskForm)).every(isValid => isValid))
-const newTask = computed(() => {formToData(taskForm)})
+const newTask = computed(() => formToData(taskForm))
 const taskForm = reactive({
   title: {
     value: "",
@@ -37,8 +38,6 @@ const taskForm = reactive({
   ]
 })
 
-const options = ["Todo", "Doing", "Completed"]
-
 const deleteSubtaskHandler = async (id) => {
   await delay(50)
   const index = taskForm.subtasks.findIndex(subtask => subtask.id === id)
@@ -55,9 +54,8 @@ const addSubtaskHandler = () => {
 }
 
 const validateFormHandler = () => {
-  console.log('isFormValid.value', isFormValid.value)
   if(isFormValid.value){
-    console.log("Form Valid")
+    boardStore.addNewTask(newTask.value)
     return
   }
   showErrors.value = true
@@ -65,8 +63,10 @@ const validateFormHandler = () => {
 </script>
 <template>
   <div class="form">
+    {{boardStore.boardFields}}
     <InputComp 
-      label="Title" 
+      label="Title"
+      placeholder="e.g Take coffee break."
       v-model="taskForm.title.value"
       v-model:isValid="taskForm.title.isValid"
       :showError="showErrors"
@@ -74,7 +74,8 @@ const validateFormHandler = () => {
     </InputComp>
 
     <InputComp 
-      label="Description" 
+      label="Description"
+      placeholder="e.g It's always good to take a break. This 15 minute break will recharge the batteries a litte."
       inputType="textarea" 
       v-model="taskForm.description.value">
     </InputComp>
@@ -85,8 +86,9 @@ const validateFormHandler = () => {
         v-for="subtask in taskForm.subtasks"
         v-model="subtask.value" 
         v-model:isValid="subtask.isValid"
-        deleteButton 
         :showError="showErrors"
+        placeholder="e.g. Make coffee."
+        deleteButton 
         required>
       </InputComp>
     </InputGroup>
@@ -98,8 +100,10 @@ const validateFormHandler = () => {
     </ButtonComp>
 
     <InputSelect 
+      label="Status"
       v-model="taskForm.status.value" 
-      :items="options"
+      v-model:isValid="taskForm.status.isValid"
+      :items="boardStore.boardFields"
       required
       :showError="showErrors">
     </InputSelect>
@@ -120,11 +124,11 @@ const validateFormHandler = () => {
       @apply text-sm font-bold w-full justify-center;
 
       &--add-subtask{
-        @apply bg-white text-primary
+        @apply bg-white text-primary hover:opacity-90 transition-opacity
       }
 
       &--submit{
-        @apply bg-primary text-white
+        @apply bg-primary text-white hover:bg-primary-light transition-colors
       }
     }
   }

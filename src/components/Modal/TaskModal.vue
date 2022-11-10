@@ -1,14 +1,12 @@
 <script setup>
-import ButtonComp from '@/components/Button/Button.vue';
 import TaskForm from '@/components/Form/TaskForm.vue';
-const props = defineProps(["toggleTaskModal", "isModalOpen"])
 </script>
 <template>
     <div class="new-task">
       <div class="new-task__header">
         <h4>Add New Task</h4>
       </div>
-      <TaskForm :toggleTaskModal="props.toggleTaskModal"/>
+      <TaskForm/>
     </div>
 </template>
 
