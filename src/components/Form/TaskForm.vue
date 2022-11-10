@@ -4,11 +4,13 @@ import InputComp from './Input.vue';
 import InputGroup from './InputGroup.vue';
 import InputSelect from './InputSelect.vue';
 import { useBoardStore } from "@/stores/use-board"
+import { useModalStore } from "@/stores/use-modal"
 import { nanoid } from 'nanoid'
 import { reactive, ref, computed } from 'vue'
 import { delay, formToData, validateForm } from '@/utils'
 
 const boardStore = useBoardStore()
+const modalStore = useModalStore()
 const showErrors = ref(false)
 const isFormValid = computed(() => Object.values(validateForm(taskForm)).every(isValid => isValid))
 const newTask = computed(() => formToData(taskForm))
@@ -56,6 +58,7 @@ const addSubtaskHandler = () => {
 const validateFormHandler = () => {
   if(isFormValid.value){
     boardStore.addNewTask(newTask.value)
+    modalStore.closeModal()
     return
   }
   showErrors.value = true
@@ -68,6 +71,8 @@ const validateFormHandler = () => {
       placeholder="e.g Take coffee break."
       v-model="taskForm.title.value"
       v-model:isValid="taskForm.title.isValid"
+      :itemList="boardStore.getAllTasks"
+      :itemKey="(item) => item.title"
       :showError="showErrors"
       required>
     </InputComp>

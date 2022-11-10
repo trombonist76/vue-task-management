@@ -9,7 +9,8 @@ export const useBoardStore = defineStore("board", {
   
   getters: {
     activeBoard: (state) => state.boards.find((board) => board.id === state.activeBoardId),
-    boardFields(){ return Object.values(this.activeBoard.fields).map(field => field.status) },
+    boardFields(){ return Object.values(this.activeBoard.fields).map(field => field.status)},
+    getAllTasks(){ return Object.values(this.activeBoard.fields).map(field => field.tasks).flat()} //[[task1,task2], [task1,task2]] so used flat()
   },
 
   actions: {
