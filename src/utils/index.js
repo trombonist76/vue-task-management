@@ -175,7 +175,10 @@ export function getBoards() {
 }
 
 export function formToData(form){
-  const data = Object.entries(form).reduce((dataObj, [formField, formValue]) => {
+  //clone the obj because delete isValid property
+  //if we dont do that it will change original reference
+  const copiedForm = JSON.parse(JSON.stringify(form))  
+  const data = Object.entries(copiedForm).reduce((dataObj, [formField, formValue]) => {
 
     if (formValue.hasOwnProperty("value")){
       dataObj[formField] = formValue.value
