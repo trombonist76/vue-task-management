@@ -83,9 +83,7 @@ const filterByFieldId = (fieldId) => {
         :itemList="filterByFieldId(field.id)"
         :itemKey="(item) => item.name"
         :showError="showErrors"
-        placeholder="e.g. Make coffee."
-        deleteButton
-        :isDisabledDeleteBtn="field.tasks.length > 0"
+        :deleteButton="field.tasks.length === 0 && boardForm.fields.length > 1"
         required>
       </InputComp>
     </InputGroup>

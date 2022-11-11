@@ -3,7 +3,7 @@ import { useClickOutside } from "@/composables/use-clickOutside"
 import { ref, defineAsyncComponent, computed } from 'vue';
 
 const emits = defineEmits(["clickedOutside"])
-const props = defineProps(["isOpen", "modalComponent", "title", "description", "formComponent"])
+const props = defineProps(["isOpen", "modalComponent", "title", "description", "type", "formComponent"])
 const contentRef = ref(null) //template ref
 const path = computed(() => getPathByComponent())
 
@@ -32,6 +32,7 @@ useClickOutside(contentRef, () => {
         <ModalComponent
           :title="props.title"
           :description="props.description"
+          :type="props.type"
           :formComponent="props.formComponent"
         ></ModalComponent>
       </div>

@@ -42,12 +42,13 @@ onMounted(() => boardStore.fetchBoards())
   <Teleport to="#modal-container">
     <Modal
       v-if="!!modalStore.activeModal.name"
-      :title="modalStore.activeModal.title"
       :modalComponent="modals.FORM"
       :formComponent="modalStore.activeModal.name"
       :isOpen="!!modalStore.activeModal.name"
-      @clickedOutside="closeModalHandler"
-      >
+      :title="modalStore.activeModal.title"
+      :description="modalStore.activeModal.description"
+      :type="modalStore.activeModal.type"
+      @clickedOutside="closeModalHandler">
     </Modal>
   </Teleport>
 </template>

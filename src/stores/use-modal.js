@@ -5,30 +5,30 @@ export const useModalStore = defineStore("modal", {
   state: () => ({
     activeModal: {
       name: "",
-      isForm: false,
-      title:"",
-      description:""
+      title: "",
+      description: "",
+      type: ""
     }
   }),
   
   actions: {
-    async setActiveModal(modal, isForm = true){
-      const { title, description } = await getModalData(modal)
+    async setActiveModal(modal, deletedItemName){
+      const { title, description, type } = await getModalData(modal)
       await delay(150)
-
-      if(isForm){
-        this.activeModal.isForm = isForm
-      }
       
       this.activeModal.name = modal
       this.activeModal.title = title
-      this.activeModal.description = description
+      this.activeModal.type = type
+
+      if(!description && !deletedItemName) return
+      this.activeModal.description = description.replace('{itemName}', deletedItemName)
     },
 
     closeModal(){
       this.activeModal.name = ""
-      this.activeModal.isForm = false
-
+      this.activeModal.title = ""
+      this.activeModal.description = ""
+      this.activeModal.type = ""
     }
   },
 });

@@ -2,7 +2,7 @@
 import ButtonComp from "@/components/Button/Button.vue"
 import { computed, ref } from "vue";
 const props = defineProps({
-  label: String, modelValue: String, required: Boolean, isDisabledDeleteBtn: Boolean,
+  label: String, modelValue: String, required: Boolean,
   deleteButton: Boolean, showError: Boolean, itemList: Array, placeholder: String,
   inputType: { type: String, default: "input" },
   errorMessages: {type: Object, default: { used: "Used", required: "Required" }},
@@ -61,7 +61,7 @@ const deleteHandler = () => {
       </label>
       <ButtonComp 
         class="input__delete-btn"
-        v-show="props.deleteButton && !props.isDisabledDeleteBtn" 
+        v-show="props.deleteButton" 
         @click="deleteHandler" 
         icon="close"
         iconClass="text-xl font-bold text-secondary"

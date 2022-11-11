@@ -28,7 +28,7 @@ const toggleSidebarHandler = async () => {
     <div class="header__content">
       <h1 class="header__title">{{ boardStore.activeBoard?.title }}</h1>
       <ButtonComp v-if="isMobile" @click="toggleSidebarHandler" icon="expand_more"></ButtonComp>
-      <HeaderButtons :openModal="modalStore.setActiveModal"></HeaderButtons>
+      <HeaderButtons :activeBoardName="boardStore.activeBoard?.title" :openModal="modalStore.setActiveModal"></HeaderButtons>
     </div>
   </div>
 </template>
