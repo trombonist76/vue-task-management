@@ -1,12 +1,13 @@
 <script setup>
 import ButtonComp from "@/components/Button/Button.vue"
 import { useMobile } from '@/composables/use-mobile'
+import { CREATE_TASK } from "@/constants";
 
 const props = defineProps(["openModal"])
 const { isMobile } = useMobile()
 
 const openModalHandler = () => {
-  props.openModal('TaskModal')
+  props.openModal(CREATE_TASK)
 }
 
 </script>

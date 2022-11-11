@@ -2,17 +2,26 @@ import { defineStore } from "pinia";
 import { delay } from "@/utils"
 export const useModalStore = defineStore("modal", {
   state: () => ({
-    activeModal: ""
+    activeModal: {
+      name: "",
+      isForm: false
+    }
   }),
   
   actions: {
-    async setActiveModal(modal){
-      await delay(50)
-      this.activeModal = modal
+    async setActiveModal(modal, isForm = true){
+      await delay(150)
+      if(isForm){
+        this.activeModal.isForm = isForm
+      }
+      this.activeModal.name = modal
+
     },
 
     closeModal(){
-      this.activeModal = ""
+      this.activeModal.name = ""
+      this.activeModal.isForm = false
+
     }
   },
 });
