@@ -3,10 +3,10 @@
     {
       "id": 1,
       "title": "Platform Launch",
-      "fields": {
-        "doing": {
+      "fields": [
+        {
           "id": 1,
-          "status": "Doing",
+          "name": "doing",
           "color": "bg-rose-500",
           "tasks": [
             {
@@ -27,9 +27,9 @@
           ]
         },
 
-        "todo": {
+        {
           "id": 2,
-          "status": "Todo",
+          "name": "todo",
           "color": "bg-blue-300",
           "tasks": [
             {
@@ -50,9 +50,9 @@
           ]
         },
 
-        "completed": {
+        {
           "id": 2,
-          "status": "Completed",
+          "name": "completed",
           "color": "bg-blue-300",
           "tasks": [
             {
@@ -82,15 +82,15 @@
             }
           ]
         }
-      }
+      ]
     },
     {
       "id": 2,
       "title": "Platform Launch 2",
-      "fields": {
-        "doing": {
+      "fields": [
+        {
           "id": 1,
-          "status": "Doing",
+          "name": "doing",
           "color": "bg-rose-500",
           "tasks": [
             {
@@ -111,9 +111,9 @@
           ]
         },
 
-        "todo": {
+        {
           "id": 2,
-          "status": "Todo",
+          "name": "todo",
           "color": "bg-blue-300",
           "tasks": [
             {
@@ -134,9 +134,9 @@
           ]
         },
 
-        "completed": {
+        {
           "id": 2,
-          "status": "completed",
+          "name": "completed",
           "color": "bg-blue-300",
           "tasks": [
             {
@@ -166,7 +166,7 @@
             }
           ]
         }
-      }
+      ]
     }
   ]
 }
