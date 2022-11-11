@@ -2,14 +2,14 @@
 import ButtonComp from "@/components/Button/Button.vue"
 import { computed, ref } from "vue";
 const props = defineProps({
-  label: String, value: String, required: Boolean,
-  deleteButton: Boolean, itemKey: Function, 
-  showError: Boolean, itemList: Array, placeholder: String,
-  inputType: { type: String, default: "input"},
-  errorMessages: {type: Object, default: { used: "Used", required: "Required"}}
+  label: String, modelValue: String, required: Boolean, isDisabledDeleteBtn: Boolean,
+  deleteButton: Boolean, showError: Boolean, itemList: Array, placeholder: String,
+  inputType: { type: String, default: "input" },
+  errorMessages: {type: Object, default: { used: "Used", required: "Required" }},
+  itemKey: { type: Function, default(item) { return item }}
 })
 const emits = defineEmits(["update:modelValue", "update:isValid", "delete"])
-const userInput = ref(props.value || "")
+const userInput = ref(props.modelValue || "")
 
 const errors = computed(() => ({
   used: props.itemList && props.itemList.some(item => props.itemKey(item) === userInput.value),
@@ -39,6 +39,7 @@ const inputHandler = (event) => {
 }
 
 const deleteHandler = () => {
+  if(props.isDisabledDeleteBtn) return
   emits("delete")
 }
 </script>
@@ -48,10 +49,25 @@ const deleteHandler = () => {
     <div class="input__label">{{ props.label }}</div>
     <div class="input__body">
       <label :class="errorClass" class="input__box">
-        <component :is="props.inputType" :placeholder="props.placeholder" rows="4" :class="inputClass" class="input__input" :value="userInput" @input="inputHandler" type="text"/>
+        <component 
+          class="input__input" 
+          :is="props.inputType" 
+          :placeholder="props.placeholder" 
+          rows="4" :class="inputClass" 
+          :value="userInput" 
+          @input="inputHandler" type="text">
+        </component>
         <span v-if="props.showError" class="input__message input__message--error">{{errorMessage}}</span>
       </label>
-      <ButtonComp v-show="props.deleteButton" @click="deleteHandler" icon="close" iconClass="text-secondary text-xl font-bold" btnPadding="p-0"></ButtonComp>
+      <ButtonComp 
+        class="input__delete-btn"
+        v-show="props.deleteButton && !props.isDisabledDeleteBtn" 
+        @click="deleteHandler" 
+        icon="close"
+        iconClass="text-xl font-bold text-secondary"
+        :isDisabled="props.isDisabledDeleteBtn"
+        btnPadding="p-0">
+      </ButtonComp>
     </div>
   </div>
 </template>

@@ -10,6 +10,12 @@
       "id": 2,
       "name": "EditTask",
       "title": "Edit Task"
+    },
+
+    {
+      "id": 3,
+      "name": "EditBoard",
+      "title": "Edit Board"
     }
   ]
 }
