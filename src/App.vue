@@ -6,19 +6,22 @@ import Modal from '@/components/Modal/Modal.vue';
 import { useMobile } from "@/composables/use-mobile"
 import { useModalStore } from '@/stores/use-modal';
 import { useSidebarStore } from '@/stores/use-sidebar';
-import { computed } from "vue";
+import { useBoardStore } from '@/stores/use-board';
+import { computed, onMounted } from "vue";
 import * as modals from './constants'
-
 
 const { isMobile } = useMobile()
 const modalStore = useModalStore()
 const sidebarStore = useSidebarStore()
+const boardStore = useBoardStore()
 const renderComponent = computed(() => isMobile.value ? Modal : Sidebar)
 
 const closeModalHandler = () => {
   //You can move to Modal.vue
   modalStore.closeModal()
 }
+
+onMounted(() => boardStore.fetchBoards())
 </script>
 
 <template>
@@ -39,7 +42,7 @@ const closeModalHandler = () => {
   <Teleport to="#modal-container">
     <Modal
       v-if="!!modalStore.activeModal.name"
-      title="Add New Task"
+      :title="modalStore.activeModal.title"
       :modalComponent="modals.FORM"
       :formComponent="modalStore.activeModal.name"
       :isOpen="!!modalStore.activeModal.name"

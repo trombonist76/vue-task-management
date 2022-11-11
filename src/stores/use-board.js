@@ -3,7 +3,7 @@ import { getBoards } from "@/utils";
 
 export const useBoardStore = defineStore("board", {
   state: () => ({
-    boards: getBoards(),
+    boards: [],
     activeBoardId: 1,
   }),
   
@@ -14,6 +14,10 @@ export const useBoardStore = defineStore("board", {
   },
 
   actions: {
+    async fetchBoards(){
+      this.boards = await getBoards()
+    },
+
     changeActiveBoard(board){
       this.activeBoardId = board.id
     },

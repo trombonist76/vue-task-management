@@ -1,0 +1,15 @@
+{
+  "modals": [
+    {
+      "id": 1,
+      "name": "CreateTask",
+      "title": "Add New Task"
+    },
+
+    {
+      "id": 2,
+      "name": "EditTask",
+      "title": "Edit Task"
+    }
+  ]
+}

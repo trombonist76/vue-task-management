@@ -19,7 +19,7 @@ const widthClass = computed(() => ({
   <main class="fields-wrapper" :class="widthClass">
     <ul class="fields-wrapper__fields">
       <Field 
-        v-for="(field, name) in boardStore.activeBoard.fields" 
+        v-for="(field, name) in boardStore.activeBoard?.fields" 
         :key="field.id" 
         :field="field"
         :name="name"
