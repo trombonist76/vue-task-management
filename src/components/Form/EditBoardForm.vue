@@ -55,9 +55,8 @@ const validateFormHandler = () => {
   showErrors.value = true
 }
 
-const filterByFieldId = (fieldId) => {
-  const fields = boardStore.activeBoard.fields.filter(field => field.id !== fieldId)
-  console.log('fields', fields)
+const filterByFieldId = (index) => {
+  const fields = boardForm.fields.slice(0, index)
   return fields
 }
 </script>
@@ -76,11 +75,11 @@ const filterByFieldId = (fieldId) => {
 
     <InputGroup label="Columns">
       <InputComp
-        v-for="field in boardForm.fields"
+        v-for="(field, index) in boardForm.fields"
         @delete="deleteFieldHandler(field.id)"
         v-model="field.name" 
         v-model:isValid="field.isValid"
-        :itemList="filterByFieldId(field.id)"
+        :itemList="filterByFieldId(index)"
         :itemKey="(item) => item.name"
         :showError="showErrors"
         :deleteButton="field.tasks.length === 0 && boardForm.fields.length > 1"

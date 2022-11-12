@@ -9,7 +9,7 @@ export const useBoardStore = defineStore("board", {
   
   getters: {
     activeBoard: (state) => state.boards.find((board) => state.activeBoardId ? board.id === state.activeBoardId : state.boards.at(0).id),
-    boardsWithoutActiveBoard: (state) => state.boards.filter(board => board.id !== state.activeBoardId),
+    boardsWithoutActiveBoard(state){return state.boards.filter(board => board.id !== this.activeBoard.id)},
     activeBoardFields(){ return this.activeBoard.fields.map(field => field.name)},
     activeBoardTasks(){ return this.activeBoard.fields.map(field => field.tasks).flat()} //[[task1,task2], [task1,task2]] so used flat()
   },
