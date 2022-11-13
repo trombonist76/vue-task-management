@@ -7,13 +7,14 @@ import { useThemeStore } from "@/stores/use-theme"
 import { useSidebarStore } from '@/stores/use-sidebar';
 import { useMouse } from "@/composables/use-mouse"
 import { useMobile } from "@/composables/use-mobile"
-import { computed, watch } from 'vue';
+import { computed, watch, ref } from 'vue';
 
 const boardStore = useBoardStore()
 const themeStore = useThemeStore()
 const sidebarStore = useSidebarStore()
 const { mousePosition } = useMouse()
 const { isMobile } = useMobile()
+const wrapper = ref(null)
 
 const slideClass = computed(() => ({
   "sidebar--slide-left": sidebarStore.isSidebarHiding,
@@ -26,7 +27,7 @@ watch(() => mousePosition.value, () => {
 
 </script>
 <template>
-    <div :class="slideClass" ref="sidebarRef" class="sidebar" >
+    <div :class="slideClass" ref="wrapper" class="sidebar" >
       <h4 class="sidebar__title">ALL BOARDS ({{ boardStore.boards.length }})</h4>
       <div class="sidebar__content">
         <ul>

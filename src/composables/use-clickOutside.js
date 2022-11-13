@@ -3,7 +3,8 @@ import { onMounted, onUnmounted } from 'vue'
 export function useClickOutside(targetRef, callback) {
 
   function clickHandler(event) {
-    if (targetRef.value?.contains(event.target)) return
+    const target = targetRef.value.wrapper ? targetRef.value.wrapper : targetRef.value
+    if (target?.contains(event.target)) return
     callback()
   }
 

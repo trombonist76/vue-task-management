@@ -2,7 +2,6 @@
 import ButtonComp from '@/components/Button/Button.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useModalStore } from "@/stores/use-modal"
-import { reactive, ref, computed } from 'vue'
 
 const boardStore = useBoardStore()
 const modalStore = useModalStore()

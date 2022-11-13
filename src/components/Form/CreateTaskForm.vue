@@ -7,7 +7,8 @@ import { useBoardStore } from "@/stores/use-board"
 import { useModalStore } from "@/stores/use-modal"
 import { nanoid } from 'nanoid'
 import { reactive, ref, computed } from 'vue'
-import { delay, formToData, validateForm } from '@/utils'
+import { delay } from '@/utils'
+import { formToData, validateForm } from '@/utils/forms'
 
 const boardStore = useBoardStore()
 const modalStore = useModalStore()
