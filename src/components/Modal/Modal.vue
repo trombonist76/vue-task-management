@@ -1,40 +1,31 @@
 <script setup>
+import Sidebar from "@/components/Sidebar/Sidebar.vue";
+import ModalForm from "./ModalForm.vue";
 import { useClickOutside } from "@/composables/use-clickOutside"
-import { ref, defineAsyncComponent, computed } from 'vue';
+import { useModalStore } from "@/stores/use-modal"
+import { ref, computed } from 'vue';
 
 const emits = defineEmits(["clickedOutside"])
-const props = defineProps(["isOpen", "modalComponent", "title", "description", "type", "formComponent"])
+const modalStore = useModalStore()
 const contentRef = ref(null) //template ref
-const path = computed(() => getPathByComponent())
-
-const getPathByComponent = () => {
-  const path = props.modalComponent === "Sidebar" 
-  ? `../Sidebar/${props.modalComponent}.vue`
-  : `./${props.modalComponent}.vue`
-
-  return path
-}
-
-const ModalComponent = defineAsyncComponent(() =>
-  import(path.value)
-)
+const componentName = computed(() => modalStore.name === "Sidebar" ? Sidebar : ModalForm)
 
 useClickOutside(contentRef, () => {
-  if(!props.isOpen) return
+  modalStore.closeModal()
   emits("clickedOutside")
 })
 
 </script>
 <template>
   <Transition name="fade">
-    <div class="modal" v-show="props.isOpen">
+    <div class="modal">
       <div class="modal__inner" ref="contentRef">
-        <ModalComponent
-          :title="props.title"
-          :description="props.description"
-          :type="props.type"
-          :formComponent="props.formComponent"
-        ></ModalComponent>
+        <component
+          :is="componentName"
+          :formComponent="modalStore.name"
+          :formInfo="modalStore.formInfo"
+          :formData="modalStore.formData"
+        ></component>
       </div>
     </div>
   </Transition>

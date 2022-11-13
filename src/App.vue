@@ -5,21 +5,12 @@ import Sidebar from "@/components/Sidebar/Sidebar.vue"
 import Modal from '@/components/Modal/Modal.vue';
 import { useMobile } from "@/composables/use-mobile"
 import { useModalStore } from '@/stores/use-modal';
-import { useSidebarStore } from '@/stores/use-sidebar';
 import { useBoardStore } from '@/stores/use-board';
-import { computed, onMounted } from "vue";
-import * as modals from './constants'
+import { onMounted } from "vue";
 
 const { isMobile } = useMobile()
 const modalStore = useModalStore()
-const sidebarStore = useSidebarStore()
 const boardStore = useBoardStore()
-const renderComponent = computed(() => isMobile.value ? Modal : Sidebar)
-
-const closeModalHandler = () => {
-  //You can move to Modal.vue
-  modalStore.closeModal()
-}
 
 onMounted(() => boardStore.fetchBoards())
 </script>
@@ -28,28 +19,12 @@ onMounted(() => boardStore.fetchBoards())
   <div class="app">
     <HeaderPanel/>
     <div class="app__content">
-      <Teleport to="#modal-container" :disabled="!isMobile">
-        <component
-          :modalComponent="modals.SIDEBAR"
-          :is="renderComponent"
-          :isOpen="sidebarStore.isModalOpen"
-          @clickedOutside="sidebarStore.closeModal">
-        </component>
-      </Teleport>
-      <MainSection />
+      <Sidebar v-if="!isMobile"></Sidebar>
+      <MainSection></MainSection>
     </div>
   </div>
   <Teleport to="#modal-container">
-    <Modal
-      v-if="!!modalStore.activeModal.name"
-      :modalComponent="modals.FORM"
-      :formComponent="modalStore.activeModal.name"
-      :isOpen="!!modalStore.activeModal.name"
-      :title="modalStore.activeModal.title"
-      :description="modalStore.activeModal.description"
-      :type="modalStore.activeModal.type"
-      @clickedOutside="closeModalHandler">
-    </Modal>
+    <Modal v-if="modalStore.isOpen"></Modal>
   </Teleport>
 </template>
 

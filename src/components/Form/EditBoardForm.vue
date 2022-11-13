@@ -6,13 +6,15 @@ import { useBoardStore } from "@/stores/use-board"
 import { useModalStore } from "@/stores/use-modal"
 import { nanoid } from 'nanoid'
 import { reactive, ref, computed } from 'vue'
-import { delay, formToData, validateForm } from '@/utils'
+import { delay } from '@/utils'
+import { formToData, validateForm } from "@/utils/forms"
+
+const props = defineProps(["isNameDisabled"])
 
 const boardStore = useBoardStore()
 const modalStore = useModalStore()
 const showErrors = ref(false)
 const isFormValid = computed(() => Object.values(validateForm(boardForm)).every(isValid => isValid))
-const editedBoard = computed(() => formToData(boardForm))
 
 const boardForm = reactive({
   title: {
@@ -44,11 +46,12 @@ const addFieldHandler = () => {
 
 const validateFormHandler = () => {
   if(isFormValid.value){
-    const board = {
+    const board = formToData(boardForm)
+    const editedBoard = {
       id: boardStore.activeBoard.id,
-      ...editedBoard.value
+      ...board
     }
-    boardStore.editBoard(board)
+    boardStore.editBoard(editedBoard)
     modalStore.closeModal()
     return
   }
@@ -67,6 +70,7 @@ const filterByFieldId = (index) => {
       placeholder="e.g Take coffee break."
       v-model="boardForm.title.value"
       v-model:isValid="boardForm.title.isValid"
+      :disabled="props.isNameDisabled"
       :itemList="boardStore.boardsWithoutActiveBoard"
       :itemKey="(item) => item.title"
       :showError="showErrors"

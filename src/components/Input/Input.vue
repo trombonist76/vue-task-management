@@ -2,7 +2,7 @@
 import ButtonComp from "@/components/Button/Button.vue"
 import { computed, ref } from "vue";
 const props = defineProps({
-  label: String, modelValue: String, required: Boolean,
+  label: String, modelValue: String, required: Boolean, disabled: Boolean,
   deleteButton: Boolean, showError: Boolean, itemList: Array, placeholder: String,
   inputType: { type: String, default: "input" },
   errorMessages: {type: Object, default: { used: "Used", required: "Required" }},
@@ -26,11 +26,13 @@ const inputClass = {
   "input__input--textarea": props.inputType === "textarea"
 }
 
-const errorClass = computed(() => ({
-  "input__box--error": props.showError && errorMessage.value
+const boxClass = computed(() => ({
+  "input__box--error": props.showError && errorMessage.value,
+  "input__box--disabled": props.disabled,
 }))
 
 const inputHandler = (event) => {
+  if(props.disabled) return
   const inputText = event.target.value.trim()
   userInput.value = inputText
   
@@ -39,7 +41,6 @@ const inputHandler = (event) => {
 }
 
 const deleteHandler = () => {
-  if(props.isDisabledDeleteBtn) return
   emits("delete")
 }
 </script>
@@ -48,24 +49,25 @@ const deleteHandler = () => {
   <div class="input">
     <div class="input__label">{{ props.label }}</div>
     <div class="input__body">
-      <label :class="errorClass" class="input__box">
+      <label :class="boxClass" class="input__box">
         <component 
           class="input__input" 
-          :is="props.inputType" 
-          :placeholder="props.placeholder" 
           rows="4" :class="inputClass" 
+          type="text"
+          :is="props.inputType"
+          :disabled="props.disabled"
+          :placeholder="props.placeholder" 
           :value="userInput" 
-          @input="inputHandler" type="text">
+          @input="inputHandler">
         </component>
         <span v-if="props.showError" class="input__message input__message--error">{{errorMessage}}</span>
       </label>
       <ButtonComp 
-        class="input__delete-btn"
+        @click="deleteHandler"
         v-show="props.deleteButton" 
-        @click="deleteHandler" 
+        class="input__delete-btn"
         icon="close"
         iconClass="text-xl font-bold text-secondary"
-        :isDisabled="props.isDisabledDeleteBtn"
         btnPadding="p-0">
       </ButtonComp>
     </div>
@@ -89,6 +91,10 @@ const deleteHandler = () => {
 
     &--error {
       @apply border-red-400 focus-within:border-red-400;
+    }
+
+    &--disabled {
+      @apply opacity-30;
     }
   }
 

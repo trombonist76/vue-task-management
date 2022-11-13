@@ -3,30 +3,39 @@
     {
       "id": 1,
       "name": "CreateTask",
-      "title": "Add New Task",
-      "type": "create"
+      "formInfo": {
+        "title": "Add New Task",
+        "type": "create"
+      }
     },
 
     {
       "id": 2,
       "name": "EditTask",
-      "title": "Edit Task",
-      "type": "edit"
+      "formInfo": { 
+        "title": "Edit Task", 
+        "type": "edit" 
+      }
     },
 
     {
       "id": 3,
       "name": "EditBoard",
-      "title": "Edit Board",
-      "type": "edit"
+      "formInfo": {
+        "title": "Edit Board",
+        "type": "edit"
+      }
+
     },
 
     {
       "id": 4,
       "name": "DeleteBoard",
-      "title": "Delete this board",
-      "description": "Are you sure you want to delete the '{itemName}' board? This action will remove all columns and tasks and cannot be reversed.",
-      "type": "delete"
+      "formInfo":{
+        "title": "Delete this board",
+        "description": "Are you sure you want to delete the '{itemName}' board? This action will remove all columns and tasks and cannot be reversed.",
+        "type": "delete"
+      }
     }
   ]
 }

@@ -21,7 +21,7 @@ const openEditBoardModal = () => {
 }
 
 const openDeleteBoardModal = () => {
-  props.openModal(modals.DELETE_BOARD, props.activeBoardName)
+  props.openModal(modals.DELETE_BOARD, { name: props.activeBoardName })
   toggleOptions()
 }
 
