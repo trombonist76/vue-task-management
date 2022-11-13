@@ -12,3 +12,13 @@ html,body,#app{
   position: absolute;
   z-index: 1;
 }
+
+@layer components {
+  .form {
+    @apply bg-brand m-auto p-8 flex flex-col gap-4 w-[30rem] text-white rounded-md;
+  }
+
+  .form__inner{
+    @apply flex flex-col gap-4 font-bold;
+  }
+}

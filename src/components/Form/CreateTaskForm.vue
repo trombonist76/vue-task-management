@@ -1,5 +1,6 @@
 <script setup>
 import ButtonComp from '@/components/Button/Button.vue';
+import FormHeader from './FormHeader.vue';
 import InputComp from '@/components/Input/Input.vue';
 import InputGroup from '@/components/Input/InputGroup.vue';
 import InputSelect from '@/components/Input/InputSelect.vue';
@@ -10,6 +11,7 @@ import { reactive, ref, computed } from 'vue'
 import { delay } from '@/utils'
 import { formToData, validateForm } from '@/utils/forms'
 
+const props = defineProps(["formInfo"])
 const boardStore = useBoardStore()
 const modalStore = useModalStore()
 const showErrors = ref(false)
@@ -66,75 +68,85 @@ const validateFormHandler = () => {
 }
 </script>
 <template>
-  <div class="task-form">
-    <InputComp 
-      label="Title"
-      placeholder="e.g Take coffee break."
-      v-model="taskForm.title.value"
-      v-model:isValid="taskForm.title.isValid"
-      :itemList="boardStore.getAllTasks"
-      :itemKey="(item) => item.title"
-      :showError="showErrors"
-      required>
-    </InputComp>
-
-    <InputComp 
-      label="Description"
-      placeholder="e.g It's always good to take a break. This 15 minute break will recharge the batteries a litte."
-      inputType="textarea" 
-      v-model="taskForm.description.value">
-    </InputComp>
-
-    <InputGroup label="Subtasks">
-      <InputComp
-        @delete="deleteSubtaskHandler(subtask.id)"
-        v-for="subtask in taskForm.subtasks"
-        v-model="subtask.value" 
-        v-model:isValid="subtask.isValid"
+  <div class="create-task">
+    <div class="create-task__header">
+      <FormHeader v-bind="props.formInfo"></FormHeader>
+    </div>
+    <div class="create-task__inner">
+      <InputComp 
+        label="Title"
+        placeholder="e.g Take coffee break."
+        v-model="taskForm.title.value"
+        v-model:isValid="taskForm.title.isValid"
+        :itemList="boardStore.getAllTasks"
+        :itemKey="(item) => item.title"
         :showError="showErrors"
-        placeholder="e.g. Make coffee."
-        deleteButton 
         required>
       </InputComp>
-    </InputGroup>
 
-    <ButtonComp
-      @click="addSubtaskHandler"
-      name="+ Add New Subtask" 
-      class="task-form__button task-form__button--add-subtask">
-    </ButtonComp>
+      <InputComp 
+        label="Description"
+        placeholder="e.g It's always good to take a break. This 15 minute break will recharge the batteries a litte."
+        inputType="textarea" 
+        v-model="taskForm.description.value">
+      </InputComp>
 
-    <InputSelect 
-      label="Status"
-      v-model="taskForm.status.value" 
-      v-model:isValid="taskForm.status.isValid"
-      :items="boardStore.activeBoardFields"
-      required
-      :showError="showErrors">
-    </InputSelect>
+      <InputGroup label="Subtasks">
+        <InputComp
+          @delete="deleteSubtaskHandler(subtask.id)"
+          v-for="subtask in taskForm.subtasks"
+          v-model="subtask.value" 
+          v-model:isValid="subtask.isValid"
+          :showError="showErrors"
+          placeholder="e.g. Make coffee."
+          deleteButton 
+          required>
+        </InputComp>
+      </InputGroup>
 
-    <ButtonComp
-      @click="validateFormHandler"
-      name="Create Task" 
-      class="task-form__button task-form__button--submit">
-    </ButtonComp>
+      <ButtonComp
+        @click="addSubtaskHandler"
+        name="+ Add New Subtask" 
+        class="create-task__button create-task__button--add-subtask">
+      </ButtonComp>
+
+      <InputSelect 
+        label="Status"
+        v-model="taskForm.status.value" 
+        v-model:isValid="taskForm.status.isValid"
+        :items="boardStore.activeBoardFields"
+        required
+        :showError="showErrors">
+      </InputSelect>
+
+      <ButtonComp
+        @click="validateFormHandler"
+        name="Create Task" 
+        class="create-task__button create-task__button--submit">
+      </ButtonComp>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .task-form{
+.create-task{
+  @apply bg-brand m-auto p-8 flex flex-col gap-4 w-[30rem] text-white rounded-md;
+
+  &__inner{
     @apply flex flex-col gap-4 font-bold;
+  }
 
-    &__button{
-      @apply text-sm font-bold w-full justify-center;
+  &__button{
+    @apply text-sm font-bold w-full justify-center;
 
-      &--add-subtask{
-        @apply bg-white text-primary hover:opacity-90 transition-opacity
-      }
+    &--add-subtask{
+      @apply bg-white text-primary hover:opacity-90 transition-opacity
+    }
 
-      &--submit{
-        @apply bg-primary text-white hover:bg-primary-light transition-colors
-      }
+    &--submit{
+      @apply bg-primary text-white hover:bg-primary-light transition-colors
     }
   }
+}
+
 </style>

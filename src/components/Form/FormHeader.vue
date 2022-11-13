@@ -10,15 +10,16 @@ const titleClass = computed(() => ({
 <template>
   <div class="form-header">
     <h4 :class="titleClass" class="form-title">{{props.title}}</h4>
-  </div>
-  <div v-if="props.description" class="form-description">
-    <p>{{props.description}}</p>
+  
+    <div v-if="props.description" class="form-description">
+      <p>{{props.description}}</p>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .form-header{
-  @apply flex justify-between font-bold text-lg items-center;
+  @apply flex flex-col gap-4;
 }
 
 .form-description{
@@ -26,7 +27,7 @@ const titleClass = computed(() => ({
 }
 
 .form-title{
-  @apply font-bold;
+  @apply font-bold text-lg;
       
   &--delete{
     @apply text-red-400
