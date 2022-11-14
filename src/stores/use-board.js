@@ -23,11 +23,6 @@ export const useBoardStore = defineStore("board", {
       this.activeBoardId = board.id
     },
 
-    addNewTask(task){
-      const field = Object.values(this.activeBoard.fields).find(field => field.name === task.status)
-      field.tasks.push(task)
-    },
-
     editBoard(editedBoard){
       const boardIndex = this.boards.findIndex(board => board.id === editedBoard.id)
       this.boards[boardIndex] = editedBoard
@@ -36,8 +31,40 @@ export const useBoardStore = defineStore("board", {
     deleteBoard(){
       const boardIndex = this.boards.findIndex(board => board.id === this.activeBoard.id)
       this.boards.splice(boardIndex, 1)
+    },
+    
+    getTask(taskTitle){
+      const task =  this.activeBoardTasks.find(task => task.title === taskTitle)
+      return task
+    },
+
+    getTaskField(taskTitle){
+      const field = this.activeBoard.fields.find(field => field.tasks.some(task => task.title === taskTitle))
+      return field
+    },
+
+    addNewTask(task){
+      const field = Object.values(this.activeBoard.fields).find(field => field.name === task.status)
+      delete task.status
+      field.tasks.push(task)
+    },
+
+    changeTaskField(oldFieldName ,newFieldName, taskTitle){
+      const oldField = this.getField(oldFieldName)
+      const newField = this.getField(newFieldName)
+      const task = this.getTask(taskTitle)
+      oldField.tasks = oldField.tasks.filter(task => task.title !== taskTitle)
+      newField.tasks = [...newField.tasks, task]
+    },
+
+    getField(fieldName){
+      const field = this.activeBoard.fields.find(field => field.name === fieldName)
+      return field
+    },
+
+    getFieldTasks(fieldName){
+      const field = this.getField(fieldName)
+      return field.tasks
     }
   }
-
-
 });
