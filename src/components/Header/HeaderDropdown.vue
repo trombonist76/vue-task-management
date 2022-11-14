@@ -4,7 +4,7 @@ import { useClickOutside } from '@/composables/use-clickOutside'
 import { delay } from "@/utils"
 import { ref } from "vue";
 
-const emits = defineEmits("edit", "delete")
+const emits = defineEmits(["edit", "delete"])
 const props = defineProps(["editName", "deleteName"])
 const showOptions = ref(false)
 const optionsRef = ref(null)
@@ -31,16 +31,16 @@ const editHandler = () => {
 </script>
 
 <template>
-  <ButtonComp icon="more_vert" @click="toggleOptions"></ButtonComp>
+  <ButtonComp icon="more_vert" btnPadding="p-0" @click="toggleOptions"></ButtonComp>
   <div v-show="showOptions" ref="optionsRef" class="dropdown">
     <ButtonComp @click="editHandler" :name="props.editName" class="dropdown__btn"></ButtonComp>
     <ButtonComp @click="deleteHandler" :name="props.deleteName" class="dropdown__btn dropdown__btn--delete"></ButtonComp>
   </div>
 </template>
 
-<style lang="scss" scoped>  
+<style lang="scss" scoped> 
   .dropdown{
-    @apply bg-brand-dark border border-border rounded-md p-4 absolute top-16 z-10;
+    @apply bg-brand-dark border border-border rounded-md p-4 absolute top-12 right-0 z-10;
 
     &__btn{
       @apply hover:opacity-60 transition-opacity text-secondary-dark;

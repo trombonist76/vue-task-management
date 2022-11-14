@@ -37,7 +37,7 @@ const openDeleteBoardModal = () => {
 .header{
 
   &__buttons {
-    @apply flex ml-auto relative
+    @apply flex ml-auto gap-4 relative
   }
 
   &__btn{

@@ -47,7 +47,7 @@ const deleteHandler = () => {
 
 <template>
   <div class="input">
-    <div class="input__label">{{ props.label }}</div>
+    <div v-if="props.label" class="input__label">{{ props.label }}</div>
     <div class="input__body">
       <label :class="boxClass" class="input__box">
         <component 

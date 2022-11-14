@@ -13,7 +13,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
   .input-group{
-    @apply flex flex-col;
+    @apply flex flex-col gap-2;
 
     &__label {
     @apply text-xs;
