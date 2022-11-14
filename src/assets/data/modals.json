@@ -36,6 +36,12 @@
         "description": "Are you sure you want to delete the '{itemName}' board? This action will remove all columns and tasks and cannot be reversed.",
         "type": "delete"
       }
+    },
+
+    {
+      "id": 5,
+      "name": "ViewTask",
+      "formInfo":{}
     }
   ]
 }

@@ -12,16 +12,19 @@
             {
               "id": 1,
               "title": "trade some btc",
+              "subtasks": [],
               "order": 1
             },
             {
               "id": 2,
               "title": "complete last project",
+              "subtasks": [],
               "order": 2
             },
             {
               "id": 3,
               "title": "learn vue",
+              "subtasks": [],
               "order": 3
             }
           ]
@@ -35,16 +38,19 @@
             {
               "id": 1,
               "title": "Markete Git",
+              "subtasks": [],
               "order": 4
             },
             {
               "id": 2,
               "title": "Ekmek Al",
+              "subtasks": [],
               "order": 5
             },
             {
               "id": 3,
               "title": "3456",
+              "subtasks": [],
               "order": 6
             }
           ]
@@ -58,26 +64,31 @@
             {
               "id": 1,
               "title": "A görevi",
+              "subtasks": [],
               "order": 7
             },
             {
               "id": 2,
               "title": "B görevi",
+              "subtasks": [],
               "order": 8
             },
             {
               "id": 3,
               "title": "C görevi",
+              "subtasks": [],
               "order": 9
             },
             {
               "id": 4,
               "title": "D görevi",
+              "subtasks": [],
               "order": 9
             },
             {
               "id": 5,
               "title": "E görevi",
+              "subtasks": [],
               "order": 9
             }
           ]
@@ -96,16 +107,19 @@
             {
               "id": 1,
               "title": "trade some btc",
+              "subtasks": [],
               "order": 1
             },
             {
               "id": 2,
               "title": "complete last project",
+              "subtasks": [],
               "order": 2
             },
             {
               "id": 3,
               "title": "learn vue",
+              "subtasks": [],
               "order": 3
             }
           ]
@@ -119,16 +133,19 @@
             {
               "id": 1,
               "title": "Markete Git",
+              "subtasks": [],
               "order": 4
             },
             {
               "id": 2,
               "title": "Ekmek Al",
+              "subtasks": [],
               "order": 5
             },
             {
               "id": 3,
               "title": "3456",
+              "subtasks": [],
               "order": 6
             }
           ]
@@ -142,26 +159,31 @@
             {
               "id": 1,
               "title": "A görevi",
+              "subtasks": [],
               "order": 7
             },
             {
               "id": 2,
               "title": "B görevi",
+              "subtasks": [],
               "order": 8
             },
             {
               "id": 3,
               "title": "C görevi",
+              "subtasks": [],
               "order": 9
             },
             {
               "id": 4,
               "title": "D görevi",
+              "subtasks": [],
               "order": 9
             },
             {
               "id": 5,
               "title": "E görevi",
+              "subtasks": [],
               "order": 9
             }
           ]

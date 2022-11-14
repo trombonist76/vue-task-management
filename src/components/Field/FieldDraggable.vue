@@ -1,9 +1,12 @@
 <script setup>
-import { ref } from "vue";
-import draggable from "vuedraggable"
 import FieldTask from './FieldTask.vue';
+import draggable from "vuedraggable"
+import { ref } from "vue";
+import { useModalStore } from "@/stores/use-modal"
+import * as modals from "@/constants"
 
 const props = defineProps(["tasks"])
+const modalStore = useModalStore()
 const drag = ref(false)
 const dragOptions = ref({
     animation: 200,
@@ -12,10 +15,9 @@ const dragOptions = ref({
     ghostClass: "ghost"
 })
 
-const clickHandler = () => {
-  console.log("clicked");
+const clickHandler = (title) => {
+  modalStore.setActiveModal(modals.VIEW_TASK, { taskTitle: title })
 }
-
 </script>
 
 <template>
@@ -34,18 +36,18 @@ const clickHandler = () => {
     itemKey="item"
   >
     <template #item="{ element }">
-      <FieldTask @click="clickHandler" class="tasks__task" :task="element"></FieldTask>
+      <FieldTask @click="clickHandler(element.title)" class="tasks__task" :task="element"></FieldTask>
     </template>
   </draggable>
 </template>
 
 <style lang="scss" scoped>
 .tasks{
-    @apply flex flex-col gap-4 cursor-move flex-1;
+  @apply flex flex-col gap-4 cursor-move flex-1;
 
-    &__task {
-      @apply cursor-pointer border border-border border-opacity-50
-    }
+  &__task {
+    @apply cursor-pointer border border-border border-opacity-50
+  }
 }
 .flip-list-move {
   transition: transform 0.5s;
@@ -56,5 +58,4 @@ const clickHandler = () => {
 .ghost {
   @apply invisible;
 }
-
 </style>
