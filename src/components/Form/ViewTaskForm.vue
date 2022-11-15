@@ -5,10 +5,13 @@ import HeaderDropdown from '@/components/Header/HeaderDropdown.vue';
 import InputCheckbox from '@/components/Input/InputCheckbox.vue';
 import InputGroup from '@/components/Input/InputGroup.vue';
 import { useBoardStore } from "@/stores/use-board"
+import { useModalStore } from "@/stores/use-modal"
 import { computed } from 'vue';
+import * as modals from "@/constants"
 
 const props = defineProps(["taskTitle"])
 const boardStore = useBoardStore()
+const modalStore = useModalStore()
 const task = computed(() => boardStore.getTask(props.taskTitle))
 const taskField = computed(() => boardStore.getTaskField(props.taskTitle))
 const checkAnySubtasks = computed(() => task.value.subtasks.length > 0)
@@ -21,7 +24,8 @@ const statusHandler = (selectedField) => {
 }
 
 const editHandler = () => {
-
+  modalStore.closeModal()
+  modalStore.setActiveModal(modals.EDIT_TASK, { taskTitle: props.taskTitle })
 }
 
 const deleteHandler = () => {

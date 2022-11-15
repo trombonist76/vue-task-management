@@ -12,18 +12,21 @@
             {
               "id": 1,
               "title": "trade some btc",
+              "description": "",
               "subtasks": [],
               "order": 1
             },
             {
               "id": 2,
               "title": "complete last project",
+              "description": "",
               "subtasks": [],
               "order": 2
             },
             {
               "id": 3,
               "title": "learn vue",
+              "description": "",
               "subtasks": [],
               "order": 3
             }
@@ -38,18 +41,21 @@
             {
               "id": 1,
               "title": "Markete Git",
+              "description": "",
               "subtasks": [],
               "order": 4
             },
             {
               "id": 2,
               "title": "Ekmek Al",
+              "description": "",
               "subtasks": [],
               "order": 5
             },
             {
               "id": 3,
               "title": "3456",
+              "description": "",
               "subtasks": [],
               "order": 6
             }
@@ -64,30 +70,35 @@
             {
               "id": 1,
               "title": "A görevi",
+              "description": "",
               "subtasks": [],
               "order": 7
             },
             {
               "id": 2,
               "title": "B görevi",
+              "description": "",
               "subtasks": [],
               "order": 8
             },
             {
               "id": 3,
               "title": "C görevi",
+              "description": "",
               "subtasks": [],
               "order": 9
             },
             {
               "id": 4,
               "title": "D görevi",
+              "description": "",
               "subtasks": [],
               "order": 9
             },
             {
               "id": 5,
               "title": "E görevi",
+              "description": "",
               "subtasks": [],
               "order": 9
             }
@@ -107,18 +118,21 @@
             {
               "id": 1,
               "title": "trade some btc",
+              "description": "",
               "subtasks": [],
               "order": 1
             },
             {
               "id": 2,
               "title": "complete last project",
+              "description": "",
               "subtasks": [],
               "order": 2
             },
             {
               "id": 3,
               "title": "learn vue",
+              "description": "",
               "subtasks": [],
               "order": 3
             }
@@ -133,18 +147,21 @@
             {
               "id": 1,
               "title": "Markete Git",
+              "description": "",
               "subtasks": [],
               "order": 4
             },
             {
               "id": 2,
               "title": "Ekmek Al",
+              "description": "",
               "subtasks": [],
               "order": 5
             },
             {
               "id": 3,
               "title": "3456",
+              "description": "",
               "subtasks": [],
               "order": 6
             }
@@ -159,30 +176,35 @@
             {
               "id": 1,
               "title": "A görevi",
+              "description": "",
               "subtasks": [],
               "order": 7
             },
             {
               "id": 2,
               "title": "B görevi",
+              "description": "",
               "subtasks": [],
               "order": 8
             },
             {
               "id": 3,
               "title": "C görevi",
+              "description": "",
               "subtasks": [],
               "order": 9
             },
             {
               "id": 4,
               "title": "D görevi",
+              "description": "",
               "subtasks": [],
               "order": 9
             },
             {
               "id": 5,
               "title": "E görevi",
+              "description": "",
               "subtasks": [],
               "order": 9
             }

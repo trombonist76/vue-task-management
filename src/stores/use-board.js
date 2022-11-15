@@ -57,6 +57,15 @@ export const useBoardStore = defineStore("board", {
       newField.tasks = [...newField.tasks, task]
     },
 
+    editTask(editedTask, originalTitle){
+      const taskField = this.getTaskField(originalTitle)
+      const taskIndex = taskField.tasks.findIndex(task => task.title === originalTitle)
+      taskField.tasks[taskIndex] = { ...editedTask }
+
+      if(editedTask.status === taskField.name) return
+      this.changeTaskField(taskField.name, editedTask.status, editedTask.title)
+    },
+
     getField(fieldName){
       const field = this.activeBoard.fields.find(field => field.name === fieldName)
       return field

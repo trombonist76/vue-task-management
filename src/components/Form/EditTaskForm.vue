@@ -11,35 +11,33 @@ import { reactive, ref, computed } from 'vue'
 import { delay } from '@/utils'
 import { formToData, validateForm } from '@/utils/forms'
 
-const props = defineProps(["formInfo"])
+const props = defineProps(["formInfo", "taskTitle"])
 const boardStore = useBoardStore()
 const modalStore = useModalStore()
+const task = computed(() => boardStore.getTask(props.taskTitle))
+const taskWithoutCurrentTask = computed(() => boardStore.activeBoardTasks.filter(task => task.title !== props.taskTitle))
+const taskField = computed(() => boardStore.getTaskField(props.taskTitle))
 const showErrors = ref(false)
 const isFormValid = computed(() => Object.values(validateForm(taskForm)).every(isValid => isValid))
-const newTask = computed(() => formToData(taskForm))
+
 const taskForm = reactive({
   title: {
-    value: "",
-    isValid: false
+    value: task.value.title,
+    isValid: true
   },
 
   description: {
-    value: "",
+    value: task.value.description,
     isValid: true
   },
 
   status: {
-    value: "",
-    isValid: false
+    value: taskField.value.name,
+    isValid: true
   },
 
   subtasks: [
-    {
-      id: nanoid(),
-      value: "",
-      isCompleted: false,
-      isValid: false
-    },
+    ...task.value.subtasks.map((subtask) => ({...subtask, isValid:true}))
   ]
 })
 
@@ -60,7 +58,12 @@ const addSubtaskHandler = () => {
 
 const validateFormHandler = () => {
   if(isFormValid.value){
-    boardStore.addNewTask(newTask.value)
+    const taskData = formToData(taskForm)
+    const editedTask = {
+      id: task.value.id,
+      ...taskData
+    }
+    boardStore.editTask(editedTask, props.taskTitle)
     modalStore.closeModal()
     return
   }
@@ -68,17 +71,18 @@ const validateFormHandler = () => {
 }
 </script>
 <template>
-  <div class="create-task">
-    <div class="create-task__header">
+  <div class="form">
+    <div class="form__header">
       <FormHeader v-bind="props.formInfo"></FormHeader>
     </div>
-    <div class="create-task__inner">
+    <div class="form__inner">
+      {{boardStore.getAllTasks}}
       <InputComp 
         label="Title"
         placeholder="e.g Take coffee break."
         v-model="taskForm.title.value"
         v-model:isValid="taskForm.title.isValid"
-        :itemList="boardStore.activeBoardTasks"
+        :itemList="taskWithoutCurrentTask"
         :itemKey="(item) => item.title"
         :showError="showErrors"
         required>

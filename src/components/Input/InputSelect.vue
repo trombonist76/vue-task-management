@@ -5,14 +5,14 @@ import { onMounted, ref, computed } from 'vue';
 
 const props = defineProps({
   showError: Boolean, label: String,
-  defaultValue: { type: [String, Object, Number] },
+  modelValue: { type: [String, Object, Number] },
   items: { type: Array, required: true },
   valueKey: { type: Function, default(item){ return item }},
   errorMessages: { type: Object, default: { used: "Used", required: "Required" }}
 })
 
 const emits = defineEmits(["update:modelValue","update:isValid"])
-const selected = ref(props.defaultValue || null)
+const selected = ref(props.modelValue || null)
 const dropdownRef = ref(null)
 const isOptionsHiding = ref(true)
 const errorMessage = computed(() => !selected.value && "Required")
