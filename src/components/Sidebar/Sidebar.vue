@@ -3,19 +3,23 @@ import ButtonComp from '@/components/Button/Button.vue';
 import SidebarSwitch from './SidebarSwitch.vue';
 import SidebarBoard from './SidebarBoard.vue';
 import { useBoardStore } from "@/stores/use-board"
+import { useModalStore } from "@/stores/use-modal"
 import { useThemeStore } from "@/stores/use-theme"
 import { useSidebarStore } from '@/stores/use-sidebar';
 import { useMouse } from "@/composables/use-mouse"
 import { useMobile } from "@/composables/use-mobile"
 import { computed, watch, ref } from 'vue';
+import * as constants from "@/constants"
 
 const boardStore = useBoardStore()
 const themeStore = useThemeStore()
+const modalStore = useModalStore()
 const sidebarStore = useSidebarStore()
 const { mousePosition } = useMouse()
 const { isMobile } = useMobile()
 const wrapper = ref(null)
 
+const checkAddStatus = computed(() => constants.MAX_ADD_OPTION + 2 > boardStore.boards.length)
 const slideClass = computed(() => ({
   "sidebar--slide-left": sidebarStore.isSidebarHiding,
 }))
@@ -24,6 +28,10 @@ watch(() => mousePosition.value, () => {
   if (mousePosition.value !== 0) return
   sidebarStore.showSidebar()
 })
+
+const createBoardHandler = () => {
+  modalStore.setActiveModal(constants.CREATE_BOARD)
+}
 
 </script>
 <template>
@@ -39,7 +47,9 @@ watch(() => mousePosition.value, () => {
             :activeBoard="boardStore.activeBoard" />
         </ul>
         <div class="sidebar__btn">
-          <ButtonComp 
+          <ButtonComp
+            v-if="checkAddStatus"
+            @click="createBoardHandler"
             class="sidebar__btn--add" 
             icon="list_alt" 
             iconFontSize="text-2xl" name="+ Create New Board">

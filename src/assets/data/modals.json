@@ -1,5 +1,15 @@
 {
   "modals": [
+
+    {
+      "id": 7,
+      "name": "CreateBoard",
+      "formInfo":{
+        "title": "Create Board",
+        "type": "create"
+      }
+    },
+
     {
       "id": 3,
       "name": "EditBoard",
