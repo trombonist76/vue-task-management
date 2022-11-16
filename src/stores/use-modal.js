@@ -12,12 +12,14 @@ export const useModalStore = defineStore("modal", {
   
   actions: {
     async setActiveModal(modal, formData){
-      const { formInfo } = await getModalData(modal)
+      const modalData = await getModalData(modal)
+      const formInfo = modalData?.formInfo
+      
       await delay(150)
       this.isOpen = true
       this.name = modal
-      this.formInfo = formInfo
       this.formData = formData
+      this.formInfo = formInfo
 
       if(formInfo.description){
         this.formInfo.description = createDescription(formInfo.description, formData.name)

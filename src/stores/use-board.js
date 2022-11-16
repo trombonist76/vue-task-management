@@ -19,6 +19,10 @@ export const useBoardStore = defineStore("board", {
       this.boards = await getBoards()
     },
 
+    createBoard(newBoard){
+      this.boards.push(newBoard)
+    },
+
     changeActiveBoard(board){
       this.activeBoardId = board.id
     },
