@@ -12,8 +12,8 @@ const emits = defineEmits(["update:modelValue", "update:isValid", "delete"])
 const userInput = ref(props.modelValue || "")
 
 const errors = computed(() => ({
-  used: props.itemList && props.itemList.some(item => props.itemKey(item) === userInput.value),
-  required: userInput.value === ""
+  required: userInput.value === "",
+  used: props.itemList && props.itemList.some(item => props.itemKey(item) === userInput.value)
 }))
 
 const errorMessage = computed(() => {
