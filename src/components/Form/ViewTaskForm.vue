@@ -29,6 +29,8 @@ const editHandler = () => {
 }
 
 const deleteHandler = () => {
+  modalStore.closeModal()
+  modalStore.setActiveModal(modals.DELETE_TASK, { name: props.taskTitle })
 
 }
 </script>
