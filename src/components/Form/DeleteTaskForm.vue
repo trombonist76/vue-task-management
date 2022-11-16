@@ -30,13 +30,13 @@ const cancelHandler = () => {
       <ButtonComp
         @click="deleteTaskHandler"
         name="Delete" 
-        class="delete_task__btn delete_task__btn--delete">
+        class="delete-task__btn delete-task__btn--delete">
       </ButtonComp>
 
       <ButtonComp
         @click="cancelHandler"
         name="Cancel" 
-        class="delete_task__btn delete_task__btn--cancel">
+        class="delete-task__btn delete-task__btn--cancel">
       </ButtonComp>
     </div>
   </div>

@@ -31,14 +31,19 @@ const editHandler = () => {
 </script>
 
 <template>
-  <ButtonComp icon="more_vert" btnPadding="p-0" @click="toggleOptions"></ButtonComp>
-  <div v-show="showOptions" ref="optionsRef" class="dropdown">
-    <ButtonComp @click="editHandler" :name="props.editName" class="dropdown__btn"></ButtonComp>
-    <ButtonComp @click="deleteHandler" :name="props.deleteName" class="dropdown__btn dropdown__btn--delete"></ButtonComp>
+  <div class="dropdown-wrapper">
+    <ButtonComp icon="more_vert" btnPadding="p-0" @click="toggleOptions"></ButtonComp>
+    <div v-show="showOptions" ref="optionsRef" class="dropdown">
+      <ButtonComp @click="editHandler" :name="props.editName" class="dropdown__btn"></ButtonComp>
+      <ButtonComp @click="deleteHandler" :name="props.deleteName" class="dropdown__btn dropdown__btn--delete"></ButtonComp>
+    </div>
   </div>
 </template>
 
-<style lang="scss" scoped> 
+<style lang="scss" scoped>
+.dropdown-wrapper{
+  @apply flex items-center justify-center
+}
   .dropdown{
     @apply bg-brand-dark border border-border rounded-md p-4 absolute top-12 right-0 z-10;
 
