@@ -93,11 +93,11 @@ const createBoardHandler = () => {
     @apply pl-3;
 
     &--add {
-      @apply text-primary gap-2 font-bold;
+      @apply text-primary gap-2 font-bold hover:opacity-60 transition-opacity;
     }
 
     &--hide {
-      @apply text-secondary text-sm mt-3 tracking-wide px-3 font-bold;
+      @apply text-secondary text-sm mt-3 tracking-wide px-3 font-bold hover:opacity-60 transition-opacity;
     }
   }
 

@@ -32,7 +32,7 @@ const editHandler = () => {
 
 <template>
   <div class="dropdown-wrapper">
-    <ButtonComp icon="more_vert" btnPadding="p-0" @click="toggleOptions"></ButtonComp>
+    <ButtonComp class="dropdown-wrapper__toggle" icon="more_vert" btnPadding="p-0" iconClass="font-bold text-xl" @click="toggleOptions"></ButtonComp>
     <div v-show="showOptions" ref="optionsRef" class="dropdown">
       <ButtonComp @click="editHandler" :name="props.editName" class="dropdown__btn"></ButtonComp>
       <ButtonComp @click="deleteHandler" :name="props.deleteName" class="dropdown__btn dropdown__btn--delete"></ButtonComp>
@@ -42,7 +42,11 @@ const editHandler = () => {
 
 <style lang="scss" scoped>
 .dropdown-wrapper{
-  @apply flex items-center justify-center
+  @apply flex items-center justify-center;
+
+  &__toggle{
+    @apply hover:bg-brand-dark transition-colors
+  }
 }
   .dropdown{
     @apply bg-brand-dark border border-border rounded-md p-4 absolute top-12 right-0 z-10;

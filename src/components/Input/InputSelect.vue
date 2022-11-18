@@ -80,7 +80,7 @@ onMounted(() => {
     }
 
     &__options{
-      @apply bg-brand-dark absolute w-full top-12 flex flex-col gap-2 p-4 rounded font-normal text-sm select-none
+      @apply bg-brand-dark absolute w-full top-16 flex flex-col gap-2 p-4 rounded font-normal text-sm select-none
     }
 
     &__option{

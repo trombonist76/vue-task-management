@@ -41,7 +41,7 @@ const openDeleteBoardModal = () => {
   }
 
   &__btn{
-    @apply bg-primary text-xs lg:text-sm
+    @apply bg-primary hover:bg-primary-light transition-colors font-bold text-xs lg:text-sm
   }
 }
 </style>
