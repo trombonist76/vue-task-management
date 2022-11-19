@@ -17,11 +17,11 @@ const checkIcon = (index) => {
 const colorHandler = (index) => {
   selectedIndex.value = index
   const color = selectedColor.value
-  emits("setColor", color)
+  emits("update:modelValue", color)
 }
 
 onMounted(() => {
-  emits("setColor", selectedColor.value)
+  emits("update:modelValue", selectedColor.value)
 })
 </script>
 
@@ -48,13 +48,10 @@ onMounted(() => {
   @apply mb-2;
 
   &__colors {
-    @apply flex gap-2 rounded-md pb-3.5;
+    @apply flex gap-2 rounded-md;
 
     &__circle {
-      @apply rounded-full h-6 w-6 flex justify-center items-center;
-    }
-
-    .selected{
+      @apply rounded-full h-5 w-5 flex justify-center items-center;
     }
   }
 
@@ -62,5 +59,4 @@ onMounted(() => {
     @apply text-xs
   }
 }
-
 </style>
