@@ -57,7 +57,7 @@
         },
 
         {
-          "id": 2,
+          "id": 3,
           "name": "completed",
           "color": "bg-blue-300",
           "tasks": [
@@ -152,7 +152,7 @@
         },
 
         {
-          "id": 2,
+          "id": 3,
           "name": "completed",
           "color": "bg-blue-300",
           "tasks": [
