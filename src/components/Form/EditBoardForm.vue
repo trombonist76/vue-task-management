@@ -2,13 +2,14 @@
 import ButtonComp from '@/components/Button/Button.vue';
 import InputComp from '@/components/Input/Input.vue';
 import InputGroup from '@/components/Input/InputGroup.vue';
+import FormHeader from './FormHeader.vue';
+import InputColor from '@/components/Input/InputColor.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useModalStore } from "@/stores/use-modal"
 import { nanoid } from 'nanoid'
 import { reactive, ref, computed } from 'vue'
 import { delay } from '@/utils'
 import { formToData, validateForm } from "@/utils/forms"
-import FormHeader from './FormHeader.vue';
 
 const props = defineProps(["formInfo", "isNameDisabled"])
 
@@ -16,6 +17,7 @@ const boardStore = useBoardStore()
 const modalStore = useModalStore()
 const showErrors = ref(false)
 const isFormValid = computed(() => Object.values(validateForm(boardForm)).every(isValid => isValid))
+const placeholders = ["e.g. Todo", "e.g. Doing", "e.g. Done", "Column Name"]
 
 const boardForm = reactive({
   title: {
@@ -38,7 +40,7 @@ const addFieldHandler = () => {
   const field = {
     id: nanoid(),
     name: "",
-    color: "bg-indigo-600",
+    color: "",
     tasks: [],
     isValid: false
   }
@@ -63,6 +65,12 @@ const filterByFieldId = (index) => {
   const fields = boardForm.fields.slice(0, index)
   return fields
 }
+
+const getPlaceholder = (index) => {
+  const placeholderIndex = index < 3 ? index : 3
+  return placeholders.at(placeholderIndex) 
+}
+
 </script>
 <template>
   <div class="form">
@@ -72,7 +80,7 @@ const filterByFieldId = (index) => {
     <div class="edit-board form__inner">
       <InputComp 
         label="Name"
-        placeholder="e.g Take coffee break."
+        placeholder="e.g Web Design."
         v-model="boardForm.title.value"
         v-model:isValid="boardForm.title.isValid"
         :disabled="props.isNameDisabled"
@@ -83,17 +91,22 @@ const filterByFieldId = (index) => {
       </InputComp>
 
       <InputGroup label="Columns">
-        <InputComp
-          v-for="(field, index) in boardForm.fields"
-          @delete="deleteFieldHandler(field.id)"
-          v-model="field.name" 
-          v-model:isValid="field.isValid"
-          :itemList="filterByFieldId(index)"
-          :itemKey="(item) => item.name"
-          :showError="showErrors"
-          :deleteButton="field.tasks.length === 0 && boardForm.fields.length > 1"
-          required>
-        </InputComp>
+        <div class="flex flex-col gap-2" v-for="(field, index) in boardForm.fields">
+          <InputComp
+            class="flex-1"
+            :placeholder="getPlaceholder(index)"
+            @delete="deleteFieldHandler(field.id)"
+            v-model="field.name" 
+            v-model:isValid="field.isValid"
+            :itemList="filterByFieldId(index)"
+            :itemKey="(item) => item.name"
+            :showError="showErrors"
+            :deleteButton="field.tasks.length === 0 && boardForm.fields.length > 1"
+            required>
+          </InputComp>
+          <InputColor v-model="field.color" class="pl-2"></InputColor>
+        </div>
+
       </InputGroup>
 
       <ButtonComp

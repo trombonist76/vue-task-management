@@ -1,6 +1,7 @@
 <script setup>
 import ButtonComp from '@/components/Button/Button.vue';
 import InputComp from '@/components/Input/Input.vue';
+import InputColor from '@/components/Input/InputColor.vue';
 import InputGroup from '@/components/Input/InputGroup.vue';
 import FormHeader from './FormHeader.vue';
 import { useBoardStore } from "@/stores/use-board"
@@ -30,7 +31,7 @@ const boardForm = reactive({
     {  
       id: nanoid(),
       name: "",
-      color: "bg-rose-500",
+      color: "",
       tasks: [],
       isValid: false
     }
@@ -97,18 +98,21 @@ const getPlaceholder = (index) => {
       </InputComp>
 
       <InputGroup label="Columns">
-        <InputComp
-          v-for="(field, index) in boardForm.fields"
-          :placeholder="getPlaceholder(index)"
-          @delete="deleteFieldHandler(field.id)"
-          v-model="field.name" 
-          v-model:isValid="field.isValid"
-          :itemList="filterByFieldId(index)"
-          :itemKey="(item) => item.name"
-          :showError="showErrors"
-          :deleteButton="field.tasks.length === 0 && boardForm.fields.length > 1"
-          required>
-        </InputComp>
+        <div class="flex flex-col gap-2" v-for="(field, index) in boardForm.fields">
+          <InputComp
+            v-for="(field, index) in boardForm.fields"
+            :placeholder="getPlaceholder(index)"
+            @delete="deleteFieldHandler(field.id)"
+            v-model="field.name" 
+            v-model:isValid="field.isValid"
+            :itemList="filterByFieldId(index)"
+            :itemKey="(item) => item.name"
+            :showError="showErrors"
+            :deleteButton="field.tasks.length === 0 && boardForm.fields.length > 1"
+            required>
+          </InputComp>
+          <InputColor v-model="field.color" class="pl-2"></InputColor>
+        </div>
       </InputGroup>
 
       <ButtonComp
