@@ -1,6 +1,6 @@
 <script setup>
 import ButtonComp from "@/components/Button/Button.vue"
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 const props = defineProps({
   label: String, modelValue: String, required: Boolean, disabled: Boolean,
   deleteButton: Boolean, showError: Boolean, itemList: Array, placeholder: String,
@@ -10,6 +10,10 @@ const props = defineProps({
 })
 const emits = defineEmits(["update:modelValue", "update:isValid", "delete"])
 const userInput = ref(props.modelValue || "")
+
+watch(() => props.modelValue, () => {
+  userInput.value = props.modelValue
+})
 
 const errors = computed(() => ({
   required: userInput.value === "",
