@@ -1,13 +1,18 @@
 <script setup>
 import FieldTask from './FieldTask.vue';
 import draggable from "vuedraggable"
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useModalStore } from "@/stores/use-modal"
 import * as modals from "@/constants"
 
 const props = defineProps(["tasks"])
 const modalStore = useModalStore()
 const drag = ref(false)
+
+const isEmpty = computed(() => ({
+  "tasks--empty": props.tasks.length < 1
+}))
+
 const dragOptions = ref({
     animation: 200,
     group: "description",
@@ -22,9 +27,10 @@ const clickHandler = (title) => {
 
 <template>
   <draggable
+    :class="isEmpty"
     :component-data="{
       tag: 'ul',
-      class: 'tasks',
+      class: [isEmpty, 'tasks'],
       type: 'transition-group',
       name: !drag ? 'flip-list' : null
     }"
@@ -47,6 +53,10 @@ const clickHandler = (title) => {
 
   &__task {
     @apply cursor-pointer border border-border border-opacity-50
+  }
+
+  &--empty{
+    @apply outline-dashed outline-2 rounded-md outline-secondary-dark/40
   }
 }
 .flip-list-move {

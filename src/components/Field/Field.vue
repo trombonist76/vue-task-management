@@ -15,7 +15,7 @@ const props = defineProps(["field"])
 
 <style lang="scss" scoped>
 .field {
-  @apply h-full flex flex-col w-[17.5rem] font-bold select-none;
+  @apply h-full flex flex-col w-[17.5rem] flex-shrink-0 font-bold select-none;
 
   &__header {
     @apply tracking-[2.4px] text-secondary text-xs mb-7;
