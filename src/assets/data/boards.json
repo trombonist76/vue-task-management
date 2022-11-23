@@ -7,7 +7,7 @@
         {
           "id": 1,
           "name": "doing",
-          "color": "bg-rose-500",
+          "color": "#48C4E4",
           "tasks": [
             {
               "id": 1,
@@ -33,7 +33,7 @@
         {
           "id": 2,
           "name": "todo",
-          "color": "bg-blue-300",
+          "color": "#8471F2",
           "tasks": [
             {
               "id": 1,
@@ -59,7 +59,7 @@
         {
           "id": 3,
           "name": "completed",
-          "color": "bg-blue-300",
+          "color": "#66E3AE",
           "tasks": [
             {
               "id": 1,
@@ -102,7 +102,7 @@
         {
           "id": 1,
           "name": "doing",
-          "color": "bg-rose-500",
+          "color": "#48C4E4",
           "tasks": [
             {
               "id": 1,
@@ -128,7 +128,7 @@
         {
           "id": 2,
           "name": "todo",
-          "color": "bg-blue-300",
+          "color": "#8471F2",
           "tasks": [
             {
               "id": 1,
@@ -154,7 +154,7 @@
         {
           "id": 3,
           "name": "completed",
-          "color": "bg-blue-300",
+          "color": "#66E3AE",
           "tasks": [
             {
               "id": 1,

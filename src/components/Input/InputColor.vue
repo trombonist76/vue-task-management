@@ -1,60 +1,36 @@
 <script setup>
-import ButtonComp from "@/components/Button/Button.vue"
 import { ref, onMounted, computed } from 'vue';
 
 const emits = defineEmits("update:modelValue")
-const props = defineProps(["label"])
-const colors = ['#6562FC', '#2CACF7', '#40D0B7', '#F8C81D', '#F87D1C', '#F8361C']
-const selectedIndex = ref(0)
-const selectedColor = computed(() => colors.at(selectedIndex.value))
+const props = defineProps(["label", "modelValue"])
 
-
-const checkIcon = (index) => {
-  const isHaveIcon = index === selectedIndex.value ? "done": undefined
-  return isHaveIcon
+const colorHandler = (event) => {
+  emits("update:modelValue", event.target.value)
 }
-
-const colorHandler = (index) => {
-  selectedIndex.value = index
-  const color = selectedColor.value
-  emits("update:modelValue", color)
-}
-
-onMounted(() => {
-  emits("update:modelValue", selectedColor.value)
-})
 </script>
 
 <template>
   <div class="color-input form__inner">
-    <div v-if="props.label" class="color-input__label">{{ props.label }}</div>
-    <div class="color-input__colors">
-      <ButtonComp
-        v-for="(color, index) in colors" 
-        btnPadding="p-0"
-        class="color-input__colors__circle" 
-        @click="colorHandler(index)"
-        :icon="checkIcon(index)"
-        :class="{'selected' : index === selectedIndex}"
-        :style="{ 'backgroundColor': color }">
-      </ButtonComp>
-    </div>
-
+    <div v-if="props.label" class="color-input__label">{{ props.label}}</div>
+      <input @change="colorHandler" type="color" class="color-input__color-picker" :style="{backgroundColor: props.modelValue}" :value="props.modelValue">
   </div>
 </template>
 
 <style lang="scss" scoped>
 .color-input{
-  @apply mb-2;
+  @apply pl-2;
 
-  &__colors {
-    @apply flex gap-2 rounded-md;
+  &__color-picker{
+    @apply appearance-none border-none bg-black rounded-xl w-6 h-6;
 
-    &__circle {
-      @apply rounded-full h-5 w-5 flex justify-center items-center;
+    &::-webkit-color-swatch {
+      @apply p-1 border-none rounded-xl;
+    }
+
+    &::-webkit-color-swatch-wrapper {
+      @apply p-0 rounded-xl;    
     }
   }
-
   &__label {
     @apply text-xs
   }

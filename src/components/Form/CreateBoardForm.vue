@@ -48,7 +48,7 @@ const addFieldHandler = () => {
   const field = {
     id: nanoid(),
     name: "",
-    color: "bg-indigo-600",
+    color: "#ffffff",
     tasks: [],
     isValid: false
   }
@@ -98,20 +98,20 @@ const getPlaceholder = (index) => {
       </InputComp>
 
       <InputGroup label="Columns">
-        <div class="flex flex-col gap-2" v-for="(field, index) in boardForm.fields">
+        <div class="create-board__field" v-for="(field, index) in boardForm.fields">
           <InputComp
-            v-for="(field, index) in boardForm.fields"
-            :placeholder="getPlaceholder(index)"
-            @delete="deleteFieldHandler(field.id)"
+            class="create-board__field__title"
             v-model="field.name" 
             v-model:isValid="field.isValid"
+            @delete="deleteFieldHandler(field.id)"
+            :placeholder="getPlaceholder(index)"
             :itemList="filterByFieldId(index)"
             :itemKey="(item) => item.name"
             :showError="showErrors"
             :deleteButton="field.tasks.length === 0 && boardForm.fields.length > 1"
             required>
           </InputComp>
-          <InputColor v-model="field.color" class="pl-2"></InputColor>
+          <InputColor v-model="field.color"></InputColor>
         </div>
       </InputGroup>
 
@@ -143,6 +143,14 @@ const getPlaceholder = (index) => {
 
     &--submit{
       @apply bg-primary text-white hover:bg-primary-light transition-colors
+    }
+  }
+
+  .create-board__field{
+    @apply flex gap-2 items-center;
+
+    &__title{
+      @apply flex-1
     }
   }
 }  

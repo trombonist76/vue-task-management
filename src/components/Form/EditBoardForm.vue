@@ -10,6 +10,7 @@ import { nanoid } from 'nanoid'
 import { reactive, ref, computed } from 'vue'
 import { delay } from '@/utils'
 import { formToData, validateForm } from "@/utils/forms"
+import { MAX_ADD_OPTION } from '@/constants';
 
 const props = defineProps(["formInfo", "isNameDisabled"])
 
@@ -17,6 +18,7 @@ const boardStore = useBoardStore()
 const modalStore = useModalStore()
 const showErrors = ref(false)
 const isFormValid = computed(() => Object.values(validateForm(boardForm)).every(isValid => isValid))
+const checkAddStatus = computed(() => MAX_ADD_OPTION > boardForm.fields.length)
 const placeholders = ["e.g. Todo", "e.g. Doing", "e.g. Done", "Column Name"]
 
 const boardForm = reactive({
@@ -40,7 +42,7 @@ const addFieldHandler = () => {
   const field = {
     id: nanoid(),
     name: "",
-    color: "",
+    color: "#ffffff",
     tasks: [],
     isValid: false
   }
@@ -91,25 +93,25 @@ const getPlaceholder = (index) => {
       </InputComp>
 
       <InputGroup label="Columns">
-        <div class="flex flex-col gap-2" v-for="(field, index) in boardForm.fields">
+        <div class="edit-board__field" v-for="(field, index) in boardForm.fields">
           <InputComp
-            class="flex-1"
-            :placeholder="getPlaceholder(index)"
-            @delete="deleteFieldHandler(field.id)"
+            class="edit-board__field__title"
             v-model="field.name" 
             v-model:isValid="field.isValid"
+            @delete="deleteFieldHandler(field.id)"
+            :placeholder="getPlaceholder(index)"
             :itemList="filterByFieldId(index)"
             :itemKey="(item) => item.name"
             :showError="showErrors"
             :deleteButton="field.tasks.length === 0 && boardForm.fields.length > 1"
             required>
           </InputComp>
-          <InputColor v-model="field.color" class="pl-2"></InputColor>
+          <InputColor v-model="field.color"></InputColor>
         </div>
-
       </InputGroup>
 
       <ButtonComp
+        v-show="checkAddStatus"
         @click="addFieldHandler"
         name="+ Add New Column" 
         class="edit-board__button edit-board__button--add-subtask">
@@ -126,6 +128,14 @@ const getPlaceholder = (index) => {
 
 <style lang="scss" scoped>
 .edit-board{
+
+  &__field{
+    @apply flex items-center gap-2;
+
+    &__title{
+      @apply flex-1;
+    }
+  }
 
   &__button{
     @apply text-sm font-bold w-full justify-center;
