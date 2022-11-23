@@ -5,11 +5,13 @@ import { useBoardStore } from "@/stores/use-board"
 import { useSidebarStore } from "@/stores/use-sidebar"
 import { useMobile } from "@/composables/use-mobile"
 import { computed } from 'vue';
+import { MAX_ADD_OPTION } from '@/constants';
 
 const boardStore = useBoardStore()
 const sidebarStore = useSidebarStore()
 const { isMobile } = useMobile()
 
+const checkAddStatus = computed(() => MAX_ADD_OPTION > boardStore.boards.length)
 const widthClass = computed(() => ({
   "fields-wrapper--full": sidebarStore.isSidebarHiding || isMobile.value,
 }))
@@ -18,14 +20,14 @@ const widthClass = computed(() => ({
 <template>
   <main class="fields-wrapper" :class="widthClass">
     <ul class="fields-wrapper__fields">
-      <Field 
-        v-for="(field, name) in boardStore.activeBoard?.fields" 
-        :key="field.id" 
+      <Field
+        v-for="(field, name) in boardStore.activeBoard?.fields"
+        :key="field.id"
         :field="field"
         :name="name"
         :activeBoard="boardStore.activeBoard">
       </Field>
-      <FieldBlank></FieldBlank>
+      <FieldBlank v-if="checkAddStatus"></FieldBlank>
     </ul>
   </main>
 </template>
