@@ -31,7 +31,6 @@ const editHandler = () => {
 const deleteHandler = () => {
   modalStore.closeModal()
   modalStore.setActiveModal(modals.DELETE_TASK, { name: props.taskTitle })
-
 }
 </script>
 
@@ -56,7 +55,7 @@ const deleteHandler = () => {
         label="Current Status"
         required
         @update:modelValue="statusHandler" 
-        :value="task.status"
+        :modelValue="taskField.name"
         :items="boardStore.activeBoardFields">
       </InputSelect>
     </div>
