@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
@@ -21,6 +22,13 @@ module.exports = {
         },
         "border": {
           DEFAULT: "#3E3F4E"
+        },
+        "delete": {
+          DEFAULT: "#EB5455"
+        },
+        "light": {
+          DEFAULT: "#fefeff",
+          ghost: "#F5F7FC" 
         }
       }
     },

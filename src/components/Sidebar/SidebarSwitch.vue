@@ -2,15 +2,16 @@
 import ButtonComp from '@/components/Button/Button.vue';
 import { computed } from 'vue';
 
-const props = defineProps(["isThemeLight", "toggleTheme"])
+const props = defineProps(["theme", "toggleTheme"])
 
 const animationClass = computed(() => ({
-  "switch__button--slide-left": !props.isThemeLight,
-  "switch__button--slide-right": props.isThemeLight
+  "switch__button--slide-left": props.theme === "dark",
+  "switch__button--slide-right": props.theme === "light"
 }))
 
 const toggleThemeHandler = () => {
   props.toggleTheme()
+  
 }
 
 </script>

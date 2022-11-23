@@ -57,7 +57,7 @@ const createBoardHandler = () => {
         </div>
       </div>
       <div class="sidebar__footer">
-        <SidebarSwitch :isThemeLight="themeStore.isLight" :toggleTheme="themeStore.toggleTheme" />
+        <SidebarSwitch :theme="themeStore.theme" :toggleTheme="themeStore.toggleTheme" />
         <ButtonComp 
           v-if="!isMobile"
           @click="() => sidebarStore.hideSidebar()" 

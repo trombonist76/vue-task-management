@@ -1,14 +1,22 @@
 import { defineStore } from "pinia";
-import { getBoards } from "@/utils";
+import { saveThemeLocal, getThemeLocal } from "@/services/local";
 
 export const useThemeStore = defineStore("theme", {
   state: () => ({
-    isLight: false
+    theme: getThemeLocal() || "dark",
   }),
   
   actions: {
     toggleTheme(){
-      this.isLight = !this.isLight
+      this.theme = this.theme === "dark" ? "light" : "dark"
+      saveThemeLocal(this.theme)
+      
+      if (this.theme === 'dark'){ 
+        document.documentElement.classList.add('dark')
+        return
+      }
+
+      document.documentElement.classList.remove('dark') 
     }
   },
 });
