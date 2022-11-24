@@ -68,11 +68,11 @@ const validateFormHandler = () => {
 }
 </script>
 <template>
-  <div class="create-task">
+  <div class="create-task form">
     <div class="create-task__header">
       <FormHeader v-bind="props.formInfo"></FormHeader>
     </div>
-    <div class="create-task__inner">
+    <div class="create-task__inner form__inner">
       <InputComp 
         label="Title"
         placeholder="e.g Take coffee break."
@@ -130,17 +130,12 @@ const validateFormHandler = () => {
 
 <style lang="scss" scoped>
 .create-task{
-  @apply bg-brand m-auto p-8 flex flex-col gap-4 w-[30rem] text-white rounded-md;
-
-  &__inner{
-    @apply flex flex-col gap-4 font-bold;
-  }
 
   &__button{
-    @apply text-sm font-bold w-full justify-center;
+    @apply text-sm font-bold w-full justify-center py-2 md:py-0;
 
     &--add-subtask{
-      @apply bg-white text-primary hover:opacity-90 transition-opacity
+      @apply bg-primary/10 dark:bg-light text-primary hover:opacity-90 transition-opacity
     }
 
     &--submit{

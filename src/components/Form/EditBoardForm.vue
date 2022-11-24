@@ -114,7 +114,7 @@ const getPlaceholder = (index) => {
         v-show="checkAddStatus"
         @click="addFieldHandler"
         name="+ Add New Column" 
-        class="edit-board__button edit-board__button--add-subtask">
+        class="edit-board__button edit-board__button--add-field">
       </ButtonComp>
 
       <ButtonComp
@@ -138,10 +138,10 @@ const getPlaceholder = (index) => {
   }
 
   &__button{
-    @apply text-sm font-bold w-full justify-center;
+    @apply text-sm font-bold w-full py-2 justify-center;
 
-    &--add-subtask{
-      @apply bg-white text-primary hover:opacity-90 transition-opacity
+    &--add-field{
+      @apply bg-primary/10 dark:bg-white text-primary hover:opacity-90 transition-opacity
     }
 
     &--submit{

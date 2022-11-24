@@ -29,7 +29,7 @@ const titleClass = computed(() => ({
   @apply font-bold text-lg;
       
   &--delete{
-    @apply text-red-400
+    @apply text-delete
   }
 }
 </style>

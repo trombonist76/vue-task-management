@@ -39,7 +39,7 @@ const toggleThemeHandler = () => {
 <style lang="scss" scoped>
 
 .switch{
-  @apply bg-brand-dark py-3 flex gap-4 items-center justify-center rounded-md;
+  @apply bg-light-switch dark:bg-brand-dark py-3 flex gap-4 items-center justify-center rounded-md;
 
   &__button{
     @apply mx-3 px-3 py-1 bg-primary rounded-full relative;

@@ -28,7 +28,9 @@ module.exports = {
         },
         "light": {
           DEFAULT: "#fefeff",
-          ghost: "#F5F7FC" 
+          "ghost": "#F5F7FC",
+          "hover": "#E5EAFA",
+          "switch": "#f4f7fd"
         }
       }
     },

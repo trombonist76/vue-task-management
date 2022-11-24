@@ -33,7 +33,7 @@ useClickOutside(contentRef, () => {
 
 <style lang="scss" scoped>
 .modal{
-  @apply w-screen h-screen bg-black bg-opacity-50 transition-all flex items-center justify-center;
+  @apply w-screen min-h-screen max-h-full bg-black bg-opacity-50 transition-all flex items-center justify-center;
   
   &__inner{
     @apply self-stretch items-center flex justify-center;

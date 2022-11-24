@@ -29,8 +29,8 @@ const checkedClass = computed(() => ({
 .checkbox{
 
   &__label{
-    @apply flex items-center gap-4 font-bold tracking-wide 
-    text-secondary bg-brand-dark p-3 rounded-lg text-xs;
+    @apply flex items-center gap-4 font-bold tracking-wide cursor-pointer
+  text-secondary bg-light-ghost hover:bg-primary/25 transition-colors dark:bg-brand-dark p-3 rounded-lg text-xs;
 
     .checked{
       @apply line-through
@@ -38,8 +38,8 @@ const checkedClass = computed(() => ({
   }
 
   &__input{
-      @apply appearance-none relative flex items-center 
-      justify-center text-white w-4 h-4 border border-secondary;
+      @apply appearance-none relative flex items-center bg-white dark:bg-inherit
+      justify-center text-white w-4 h-4 border border-secondary/25;
 
 
     &:checked{

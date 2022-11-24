@@ -111,7 +111,7 @@ const validateFormHandler = () => {
       <ButtonComp
         @click="addSubtaskHandler"
         name="+ Add New Subtask" 
-        class="create-task__button create-task__button--add-subtask">
+        class="edit-task__button edit-task__button--add-subtask">
       </ButtonComp>
 
       <InputSelect 
@@ -125,15 +125,15 @@ const validateFormHandler = () => {
 
       <ButtonComp
         @click="validateFormHandler"
-        name="Create Task" 
-        class="create-task__button create-task__button--submit">
+        name="Save Changes" 
+        class="edit-task__button edit-task__button--submit">
       </ButtonComp>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.create-task{
+.edit-task{
   @apply bg-brand m-auto p-8 flex flex-col gap-4 w-[30rem] text-white rounded-md;
 
   &__inner{
@@ -141,10 +141,10 @@ const validateFormHandler = () => {
   }
 
   &__button{
-    @apply text-sm font-bold w-full justify-center;
+    @apply text-sm font-bold w-full justify-center py-2;
 
     &--add-subtask{
-      @apply bg-white text-primary hover:opacity-90 transition-opacity
+      @apply bg-primary-light/20 dark:bg-light text-primary hover:opacity-90 transition-opacity
     }
 
     &--submit{

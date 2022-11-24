@@ -15,7 +15,7 @@ html,body,#app{
 
 @layer components {
   .form {
-    @apply bg-brand m-auto p-8 flex flex-col gap-4 w-[30rem] text-white rounded-md;
+    @apply bg-light dark:bg-brand m-auto p-8 flex flex-col gap-4 w-[20rem] md:w-[30rem] dark:text-white rounded-md;
   }
 
   .form__inner{

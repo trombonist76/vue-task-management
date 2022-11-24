@@ -19,7 +19,7 @@ import { computed } from 'vue';
 
 <style lang="scss" scoped>
   .task{
-    @apply min-h-[5.5rem] flex flex-col justify-center px-4 py-6 bg-brand rounded-lg text-sm hover:opacity-60 transition-opacity;
+    @apply min-h-[5.5rem] flex flex-col justify-center px-4 py-6 bg-light drop-shadow-md dark:bg-brand rounded-lg text-sm hover:opacity-60 transition-opacity;
 
     &__title{
       @apply text-slate-400 text-xs tracking-wide inline-flex mt-2;

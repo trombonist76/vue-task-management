@@ -34,7 +34,7 @@ const widthClass = computed(() => ({
 
 <style lang="scss" scoped>
   .fields-wrapper{
-    @apply absolute -z-0 inset-0 left-[300px] flex-1 flex flex-col transition-all duration-500 bg-brand-dark;
+    @apply absolute -z-0 inset-0 left-[300px] flex-1 flex flex-col transition-[left] duration-500 bg-light-ghost dark:bg-brand-dark;
     
     &--full{
       @apply left-0

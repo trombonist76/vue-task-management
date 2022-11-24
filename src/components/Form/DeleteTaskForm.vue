@@ -50,11 +50,11 @@ const cancelHandler = () => {
     @apply flex-1 justify-center transition-opacity hover:opacity-60;
 
     &--delete{
-      @apply bg-rose-500
+      @apply bg-delete text-white
     }
 
     &--cancel{
-      @apply text-primary-light bg-white
+      @apply text-primary bg-primary-light/20 dark:bg-light
     }
   }
 }

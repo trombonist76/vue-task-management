@@ -47,14 +47,14 @@ const cancelHandler = () => {
   @apply flex-row;
 
   &__btn{
-    @apply flex-1 justify-center transition-opacity hover:opacity-60;
+    @apply flex-1 justify-center transition-opacity hover:opacity-60 py-2;
 
     &--delete{
-      @apply bg-rose-500
+      @apply bg-delete text-white
     }
 
     &--cancel{
-      @apply text-primary-light bg-white
+      @apply text-primary bg-primary/10 dark:bg-light
     }
   }
 }

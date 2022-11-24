@@ -30,7 +30,7 @@ onMounted(() => boardStore.fetchBoards())
 
 <style lang="scss" scoped>
 .app {
-  @apply flex flex-col h-full bg-brand text-white;
+  @apply flex flex-col h-full bg-light text-black dark:bg-brand dark:text-white;
 
   &__content {
     @apply flex-1 flex relative

@@ -52,7 +52,7 @@ const clickHandler = (title) => {
   @apply flex flex-col gap-4 cursor-move flex-1;
 
   &__task {
-    @apply cursor-pointer border border-border border-opacity-50
+    @apply cursor-pointer border border-secondary border-opacity-10 dark:border-border dark:border-opacity-50
   }
 
   &--empty{

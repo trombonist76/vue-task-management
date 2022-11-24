@@ -75,7 +75,9 @@ const createBoardHandler = () => {
 
 <style lang="scss" scoped>
 .sidebar {
-  @apply flex font-bold h-5/6 md:flex md:fixed md:mt-0 md:h-[calc(100%-95px)] bg-brand left-0 w-[300px] pr-7 pb-8 pt-4 flex-col border-r border-border transition-all duration-500;
+  @apply flex font-bold h-4/6 md:flex md:fixed md:mt-0 md:h-[calc(100%-95px)] bg-light
+  dark:bg-brand left-0 w-[300px] pr-7 pb-8 pt-4 flex-col border-r border-light-hover 
+  dark:border-border transition-transform duration-500;
 
   &--hidden{
     @apply hidden

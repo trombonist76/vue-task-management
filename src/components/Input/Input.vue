@@ -91,10 +91,10 @@ const deleteHandler = () => {
   }
 
   &__box {
-    @apply flex-1 flex items-center pr-2 bg-brand rounded text-sm border border-secondary-dark focus-within:border-primary transition-all duration-200;
+    @apply flex-1 flex items-center pr-2 dark:bg-brand rounded text-sm border border-secondary-dark focus-within:border-primary transition-all duration-200;
 
     &--error {
-      @apply border-red-400 focus-within:border-red-400;
+      @apply border-delete focus-within:border-delete;
     }
 
     &--disabled {
@@ -103,7 +103,8 @@ const deleteHandler = () => {
   }
 
   &__input {
-    @apply flex-1 px-4 py-2 bg-transparent outline-none resize-none placeholder:leading-relaxed placeholder:text-xs placeholder:text-secondary placeholder:text-opacity-60;
+    @apply flex-1 px-4 py-2 bg-transparent outline-none resize-none placeholder:leading-relaxed 
+    placeholder:text-xs placeholder:text-secondary placeholder:text-opacity-60 text-xs sm:text-sm md:text-base;
   }
 
   &__message {

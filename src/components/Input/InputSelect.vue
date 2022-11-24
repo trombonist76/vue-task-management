@@ -75,20 +75,20 @@ onMounted(() => {
       @apply w-full flex items-center justify-between border border-secondary-dark focus-within:border-primary rounded cursor-pointer px-4 py-1;
 
       &--error{
-        @apply text-xs border-red-400 focus-within:border-red-400;
+        @apply text-xs border-delete focus-within:border-delete;
       }
     }
 
     &__options{
-      @apply bg-brand-dark absolute w-full top-16 flex flex-col gap-2 p-4 rounded font-normal text-sm select-none
+      @apply bg-light drop-shadow-md border border-secondary/20 dark:bg-brand-dark absolute w-full mt-2 top-16 flex flex-col gap-2 p-4 rounded font-normal text-sm select-none
     }
 
     &__option{
-      @apply text-secondary hover:text-white transition-colors cursor-pointer;
+      @apply text-secondary hover:text-black dark:hover:text-white transition-colors cursor-pointer;
     }
 
     &__error-message{
-      @apply ml-auto px-2 text-red-400 
+      @apply ml-auto px-2 text-delete 
     }
 
     &__button{
