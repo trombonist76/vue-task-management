@@ -1,10 +1,10 @@
 <script setup>
 import { computed, ref } from 'vue';
 
-const props = defineProps({"text": String, "value": { type: Boolean, default: false }})
+const props = defineProps({"text": String, "modelValue": { type: Boolean, default: false }})
 const emits = defineEmits(["update:modelValue"])
 
-const isChecked = ref(props.value)
+const isChecked = ref(props.modelValue)
 
 const checkHandler = (event) => {
   isChecked.value = event.target.checked
@@ -19,7 +19,7 @@ const checkedClass = computed(() => ({
 <template>
   <div class="checkbox">
     <label class="checkbox__label">
-      <input :value="isChecked" @input="checkHandler" type="checkbox" class="checkbox__input" />
+      <input :checked="isChecked" @input="checkHandler" type="checkbox" class="checkbox__input" />
       <span :class="checkedClass">{{props.text}}</span>
     </label>
   </div>
@@ -39,7 +39,7 @@ const checkedClass = computed(() => ({
 
   &__input{
       @apply appearance-none relative flex items-center bg-white dark:bg-inherit
-      justify-center text-white w-4 h-4 border border-secondary/25;
+      justify-center text-white w-4 h-4 border border-secondary/25 flex-shrink-0;
 
 
     &:checked{

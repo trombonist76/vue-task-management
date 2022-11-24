@@ -104,7 +104,7 @@ const deleteHandler = () => {
 
   &__input {
     @apply flex-1 px-4 py-2 bg-transparent outline-none resize-none placeholder:leading-relaxed 
-    placeholder:text-xs placeholder:text-secondary placeholder:text-opacity-60 text-xs sm:text-sm md:text-base;
+    placeholder:text-xs placeholder:text-secondary placeholder:text-opacity-60 text-xs sm:text-sm;
   }
 
   &__message {

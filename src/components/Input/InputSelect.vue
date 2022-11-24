@@ -43,7 +43,7 @@ const selectHandler = (item) => {
 }
 
 onMounted(() => {
-  if (!selected.value) return
+  if (!selected.value || selected.value === props.modelValue) return
   emits("update:modelValue", selected.value)
   emits("update:isValid", !errorMessage.value)
 })
