@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { delay, createDescription } from "@/utils"
-import { getModalData } from "../services/modals";
+import { getModalData } from "@/services/modals";
 export const useModalStore = defineStore("modal", {
   state: () => ({
     name: "",

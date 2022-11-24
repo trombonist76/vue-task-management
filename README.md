@@ -37,14 +37,14 @@ This repo contains the Kanban task management web app solution on the **[fronten
 
 ## :tv: **DEMO**
 
-### [Netlify Demo](https://horse-racing-vue.netlify.app/)
+### [Netlify Demo](https://kanban-task-management-vue.netlify.app/)
 
 <br>
 
 ## :film_strip: **Preview**
 
-![Race Start Video](/src//assets/readme-img/gif-1.gif "Gif-1")
-![Race Finish Video](/src//assets/readme-img/gif-2.gif "Gif-2")
+![Preview-1](/src/assets/gifs/preview1.gif "Gif-1")
+![Preview-2](/src/assets/gifs/preview2.gif "Gif-2")
 
 <br>
 
