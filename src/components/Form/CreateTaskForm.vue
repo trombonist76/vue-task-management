@@ -132,7 +132,7 @@ const validateFormHandler = () => {
 .create-task{
 
   &__button{
-    @apply text-sm font-bold w-full justify-center py-2 md:py-0;
+    @apply text-sm font-bold w-full justify-center py-2;
 
     &--add-subtask{
       @apply bg-primary/10 dark:bg-light text-primary hover:opacity-90 transition-opacity
