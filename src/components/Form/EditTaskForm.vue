@@ -116,10 +116,10 @@ const validateFormHandler = () => {
 
       <InputSelect 
         label="Status"
+        required
         v-model="taskForm.status.value" 
         v-model:isValid="taskForm.status.isValid"
         :items="boardStore.activeBoardFields"
-        required
         :showError="showErrors">
       </InputSelect>
 
