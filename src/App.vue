@@ -6,13 +6,15 @@ import Modal from '@/components/Modal/Modal.vue';
 import { useMobile } from "@/composables/use-mobile"
 import { useModalStore } from '@/stores/use-modal';
 import { useBoardStore } from '@/stores/use-board';
-import { onMounted } from "vue";
+import { onMounted } from 'vue';
 
 const { isMobile } = useMobile()
 const modalStore = useModalStore()
 const boardStore = useBoardStore()
 
-onMounted(() => boardStore.fetchBoards())
+onMounted(async () => {
+  await boardStore.fetchBoards()
+})
 </script>
 
 <template>

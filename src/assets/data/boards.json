@@ -6,90 +6,298 @@
       "fields": [
         {
           "id": 1,
-          "name": "doing",
+          "name": "Todo",
           "color": "#48C4E4",
           "tasks": [
             {
               "id": 1,
-              "title": "trade some btc",
+              "title": "Build UI for onboarding flow",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "id": 1,
+                  "value": "Sign up page",
+                  "isCompleted": true
+                },
+                {
+                  "id": 2,
+                  "value": "Sign in page",
+                  "isCompleted": false
+                },
+                {
+                  "id": 3,
+                  "value": "Welcome page",
+                  "isCompleted": false
+                }
+              ]
             },
             {
               "id": 2,
-              "title": "complete last project",
+              "title": "Build UI for search",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "value": "Sign up page",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Sign in page",
+                  "isCompleted": true
+                },
+                {
+                  "value": "Welcome page",
+                  "isCompleted": true
+                }
+              ]
             },
             {
               "id": 3,
-              "title": "learn vue",
+              "title": "Build settings UI",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "value": "Account page",
+                  "isCompleted": true
+                },
+                {
+                  "value": "Billing page",
+                  "isCompleted": true
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "title": "QA and test all major user journeys",
+              "description": "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
+              "subtasks": [
+                {
+                  "value": "Internal testing",
+                  "isCompleted": true
+                },
+                {
+                  "value": "External testing",
+                  "isCompleted": true
+                }
+              ]
             }
           ]
         },
 
         {
           "id": 2,
-          "name": "todo",
+          "name": "Doing",
           "color": "#8471F2",
           "tasks": [
             {
               "id": 1,
-              "title": "Markete Git",
+              "title": "Design settings and search pages",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "value": "Settings - Account page",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Settings - Billing page",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Search page",
+                  "isCompleted": true
+                }
+              ]
             },
             {
               "id": 2,
-              "title": "Ekmek Al",
+              "title": "Add account management endpoints",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "value": "Upgrade plan",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Cancel plan",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Update payment method",
+                  "isCompleted": true
+                }
+              ]
             },
             {
               "id": 3,
-              "title": "3456",
+              "title": "Design onboarding flow",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "value": "Sign up page",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Sign in page",
+                  "isCompleted": true
+                },
+                {
+                  "value": "Welcome page",
+                  "isCompleted": true
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "title": "Add search enpoints",
+              "description": "",
+              "subtasks": [
+                {
+                  "value": "Add search endpoint",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Define search filters",
+                  "isCompleted": true
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "title": "Add authentication endpoints",
+              "description": "",
+              "subtasks": [
+                {
+                  "value": "Define user model",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Add auth endpoints",
+                  "isCompleted": true
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "title": "Research pricing points of various competitors and trial different business models",
+              "description": "We know what we're planning to build for version one. Now we need to finalise the first pricing model we'll use. Keep iterating the subtasks until we have a coherent proposition.",
+              "subtasks": [
+                {
+                  "value": "Research competitor pricing and business models",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Outline a business model that works for our solution",
+                  "isCompleted": true
+                },
+                {
+                  "value": "Talk to potential customers about our proposed solution and ask for fair price expectancy",
+                  "isCompleted": true
+                }
+              ]
             }
           ]
         },
 
         {
           "id": 3,
-          "name": "completed",
+          "name": "Done",
           "color": "#66E3AE",
           "tasks": [
             {
               "id": 1,
-              "title": "A görevi",
-              "description": "",
-              "subtasks": []
+              "title": "Conduct 5 wireframe tests",
+              "description": "Ensure the layout continues to make sense and we have strong buy-in from potential users.",
+              "subtasks": [
+                {
+                  "value": "Complete 5 wireframe prototype tests",
+                  "isCompleted": true
+                }
+              ]
             },
             {
               "id": 2,
-              "title": "B görevi",
-              "description": "",
-              "subtasks": []
+              "title": "Create wireframe prototype",
+              "description": "Create a greyscale clickable wireframe prototype to test our asssumptions so far.",
+              "subtasks": [
+                {
+                  "value": "Create clickable wireframe prototype in Balsamiq",
+                  "isCompleted": true
+                }
+              ]
             },
             {
               "id": 3,
-              "title": "C görevi",
-              "description": "",
-              "subtasks": []
+              "title": "Review results of usability tests and iterate",
+              "description": "Keep iterating through the subtasks until we're clear on the core concepts for the app.",
+              "subtasks": [
+                {
+                  "value": "Meet to review notes from previous tests and plan changes",
+                  "isCompleted": true
+                },
+                {
+                  "value": "Make changes to paper prototypes",
+                  "isCompleted": true
+                },
+                {
+                  "value": "Conduct 5 usability tests",
+                  "isCompleted": true
+                }
+              ]
             },
             {
               "id": 4,
-              "title": "D görevi",
+              "title": "Create paper prototypes and conduct 10 usability tests with potential customers",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "value": "Create paper prototypes for version one",
+                  "isCompleted": true
+                },
+                {
+                  "value": "Complete 10 usability tests",
+                  "isCompleted": true
+                }
+              ]
             },
             {
               "id": 5,
-              "title": "E görevi",
+              "title": "Market discovery",
+              "description": "We need to define and refine our core product. Interviews will help us learn common pain points and help us define the strongest MVP.",
+              "subtasks": [
+                {
+                  "value": "Interview 10 prospective customers",
+                  "isCompleted": true
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "title": "Competitor analysis",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "value": "Find direct and indirect competitors",
+                  "isCompleted": true
+                },
+                {
+                  "value": "SWOT analysis for each competitor",
+                  "isCompleted": true
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "title": "Research the market",
+              "description": "We need to get a solid overview of the market to ensure we have up-to-date estimates of market size and demand.",
+              "subtasks": [
+                {
+                  "value": "Write up research analysis",
+                  "isCompleted": true
+                },
+                {
+                  "value": "Calculate TAM",
+                  "isCompleted": true
+                }
+              ]
             }
           ]
         }
@@ -97,96 +305,158 @@
     },
     {
       "id": 2,
-      "title": "Platform Launch 2",
+      "title": "Marketing Plan",
       "fields": [
         {
           "id": 1,
-          "name": "doing",
+          "name": "Todo",
           "color": "#48C4E4",
           "tasks": [
             {
               "id": 1,
-              "title": "trade some btc",
-              "description": "",
-              "subtasks": []
+              "title": "Plan Product Hunt launch",
+              "description": "11",
+              "subtasks": [
+                {
+                  "value": "Find hunter",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Gather assets",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Draft product page",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Notify customers",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Notify network",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Launch!",
+                  "isCompleted": false
+                }
+              ]
             },
             {
               "id": 2,
-              "title": "complete last project",
+              "title": "Share on Show HN",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "value": "Draft out HN post",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Get feedback and refine",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Publish post",
+                  "isCompleted": false
+                }
+              ]
             },
             {
               "id": 3,
-              "title": "learn vue",
+              "title": "Write launch article to publish on multiple channels",
               "description": "",
-              "subtasks": []
+              "subtasks": [
+                {
+                  "value": "Write article",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Publish on LinkedIn",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Publish on Inndie Hackers",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Publish on Medium",
+                  "isCompleted": false
+                }
+              ]
             }
           ]
         },
-
         {
           "id": 2,
-          "name": "todo",
-          "color": "#8471F2",
+          "name": "Doing",
+          "color":"#66E3AE",
+          "tasks":[]
+        },
+        {
+          "id": 3,
+          "name": "Done",
+          "color":"#8471F2",
+          "tasks":[]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Roadmap",
+      "fields": [
+        {
+          "id": 1,
+          "name": "Now",
+          "color": "#48C4E4",
           "tasks": [
             {
               "id": 1,
-              "title": "Markete Git",
-              "description": "",
-              "subtasks": []
+              "title": "Launch version one",
+              "description": "11",
+              "subtasks": [
+                {
+                  "value": "Launch privately to our waitlist",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Launch publicly on PH, HN, etc.",
+                  "isCompleted": false
+                }
+              ]
             },
             {
               "id": 2,
-              "title": "Ekmek Al",
-              "description": "",
-              "subtasks": []
-            },
-            {
-              "id": 3,
-              "title": "3456",
-              "description": "",
-              "subtasks": []
+              "title": "Review early feedback and plan next steps for roadmap",
+              "description": "Beyond the initial launch, we're keeping the initial roadmap completely empty. This meeting will help us plan out our next steps based on actual customer feedback.",
+              "subtasks": [
+                {
+                  "value": "Interview 10 customers",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Review common customer pain points and suggestions",
+                  "isCompleted": false
+                },
+                {
+                  "value": "Outline next steps for our roadmap",
+                  "isCompleted": false
+                }
+              ]
             }
           ]
         },
-
+        {
+          "id": 2,
+          "name": "Next",
+          "color":"#66E3AE",
+          "tasks":[]
+        },
         {
           "id": 3,
-          "name": "completed",
-          "color": "#66E3AE",
-          "tasks": [
-            {
-              "id": 1,
-              "title": "A görevi",
-              "description": "",
-              "subtasks": []
-            },
-            {
-              "id": 2,
-              "title": "B görevi",
-              "description": "",
-              "subtasks": []
-            },
-            {
-              "id": 3,
-              "title": "C görevi",
-              "description": "",
-              "subtasks": []
-            },
-            {
-              "id": 4,
-              "title": "D görevi",
-              "description": "",
-              "subtasks": []
-            },
-            {
-              "id": 5,
-              "title": "E görevi",
-              "description": "",
-              "subtasks": []
-            }
-          ]
+          "name": "Later",
+          "color":"#8471F2",
+          "tasks":[]
         }
       ]
     }

@@ -3,7 +3,7 @@ import { saveThemeLocal, getThemeLocal } from "@/services/local";
 
 export const useThemeStore = defineStore("theme", {
   state: () => ({
-    theme: getThemeLocal() || "dark",
+    theme: getThemeLocal() || "light",
   }),
   
   actions: {
