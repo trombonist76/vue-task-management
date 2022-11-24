@@ -1,17 +1,35 @@
 <script setup>
 import ButtonComp from "@/components/Button/Button.vue"
+import * as modals from "@/constants";
 import { useMobile } from '@/composables/use-mobile'
+import HeaderDropdown from "./HeaderDropdown.vue";
 
-const props = defineProps(["toggleModal"])
 const { isMobile } = useMobile()
+const props = defineProps(["openModal", "activeBoardName"])
 
+const openCreateTaskModal = () => {
+  props.openModal(modals.CREATE_TASK)
+}
+
+const openEditBoardModal = () => {
+  props.openModal(modals.EDIT_BOARD)
+}
+
+const openDeleteBoardModal = () => {
+  props.openModal(modals.DELETE_BOARD, { name: props.activeBoardName })
+}
 </script>
 
 <template>
   <div class="header__buttons">
-    <ButtonComp v-if="isMobile" @click="props.toggleModal" class="header__btn" icon="add"></ButtonComp>
-    <ButtonComp v-else @click="props.toggleModal" class="header__btn" icon="add" name="Add New Task"></ButtonComp>
-    <ButtonComp icon="more_vert"></ButtonComp>
+    <ButtonComp v-if="isMobile" @click="openCreateTaskModal" class="header__btn" icon="add"></ButtonComp>
+    <ButtonComp v-else @click="openCreateTaskModal" class="header__btn" icon="add" name="Add New Task"></ButtonComp>
+    <HeaderDropdown 
+      @edit="openEditBoardModal"
+      @delete="openDeleteBoardModal"
+      editName="Edit Board" 
+      deleteName="Delete Board">
+    </HeaderDropdown>
   </div>
 </template>
 
@@ -19,11 +37,11 @@ const { isMobile } = useMobile()
 .header{
 
   &__buttons {
-    @apply flex ml-auto
+    @apply flex ml-auto gap-4 relative
   }
 
   &__btn{
-    @apply bg-primary text-xs lg:text-sm
+    @apply bg-primary text-white hover:bg-primary-light transition-colors font-bold text-xs lg:text-sm
   }
 }
 </style>

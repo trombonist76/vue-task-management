@@ -12,3 +12,33 @@ html,body,#app{
   position: absolute;
   z-index: 1;
 }
+
+@layer components {
+  .form {
+    @apply bg-light dark:bg-brand m-auto p-8 flex flex-col gap-4 w-[20rem] md:w-[30rem] dark:text-white rounded-md;
+  }
+
+  .form__inner{
+    @apply flex flex-col gap-4 font-bold;
+  }
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #3E3E4F;
+}
+
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #16171F;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #3E3E4F;
+  border-radius: 10px;
+}

@@ -1,0 +1,67 @@
+{
+  "modals": [
+
+    {
+      "id": 7,
+      "name": "CreateBoard",
+      "formInfo":{
+        "title": "Create Board",
+        "type": "create"
+      }
+    },
+
+    {
+      "id": 3,
+      "name": "EditBoard",
+      "formInfo": {
+        "title": "Edit Board",
+        "type": "edit"
+      }
+
+    },
+
+    {
+      "id": 4,
+      "name": "DeleteBoard",
+      "formInfo":{
+        "title": "Delete this board",
+        "description": "Are you sure you want to delete the '{itemName}' board? This action will remove all columns and tasks and cannot be reversed.",
+        "type": "delete"
+      }
+    },
+
+    {
+      "id": 5,
+      "name": "ViewTask",
+      "formInfo":{}
+    },
+
+    {
+      "id": 6,
+      "name": "DeleteTask",
+      "formInfo":{
+        "title": "Delete Task",
+        "description": "Are you sure you want to delete the '{itemName}' task? This action will remove the task and all subtasks and cannot be reversed.",
+        "type": "delete"
+      }
+    },
+
+    {
+      "id": 1,
+      "name": "CreateTask",
+      "formInfo": {
+        "title": "Add New Task",
+        "type": "create"
+      }
+    },
+
+    {
+      "id": 2,
+      "name": "EditTask",
+      "formInfo": { 
+        "title": "Edit Task", 
+        "type": "edit" 
+      }
+    }
+  ]
+}

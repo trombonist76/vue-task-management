@@ -1,0 +1,194 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "Platform Launch",
+      "fields": [
+        {
+          "id": 1,
+          "name": "doing",
+          "color": "#48C4E4",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "trade some btc",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 2,
+              "title": "complete last project",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 3,
+              "title": "learn vue",
+              "description": "",
+              "subtasks": []
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "name": "todo",
+          "color": "#8471F2",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "Markete Git",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 2,
+              "title": "Ekmek Al",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 3,
+              "title": "3456",
+              "description": "",
+              "subtasks": []
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "name": "completed",
+          "color": "#66E3AE",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "A görevi",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 2,
+              "title": "B görevi",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 3,
+              "title": "C görevi",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 4,
+              "title": "D görevi",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 5,
+              "title": "E görevi",
+              "description": "",
+              "subtasks": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Platform Launch 2",
+      "fields": [
+        {
+          "id": 1,
+          "name": "doing",
+          "color": "#48C4E4",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "trade some btc",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 2,
+              "title": "complete last project",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 3,
+              "title": "learn vue",
+              "description": "",
+              "subtasks": []
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "name": "todo",
+          "color": "#8471F2",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "Markete Git",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 2,
+              "title": "Ekmek Al",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 3,
+              "title": "3456",
+              "description": "",
+              "subtasks": []
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "name": "completed",
+          "color": "#66E3AE",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "A görevi",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 2,
+              "title": "B görevi",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 3,
+              "title": "C görevi",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 4,
+              "title": "D görevi",
+              "description": "",
+              "subtasks": []
+            },
+            {
+              "id": 5,
+              "title": "E görevi",
+              "description": "",
+              "subtasks": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,8 +6,8 @@ const props = defineProps(["field"])
 <template>
   <div class="field drop-zone">
     <div class="field__header">
-      <span :class="props.field.status" class="field__circle"></span>
-      {{ props.field.status.toUpperCase() }} ({{ props.field.tasks.length }})
+      <span :style="{ backgroundColor: props.field.color }" class="field__circle"></span>
+      {{ props.field.name.toUpperCase() }} ({{ props.field.tasks.length }})
     </div>
     <FieldDraggable :tasks="props.field.tasks"></FieldDraggable>
   </div>
@@ -15,7 +15,7 @@ const props = defineProps(["field"])
 
 <style lang="scss" scoped>
 .field {
-  @apply h-full flex flex-col w-[17.5rem] font-bold select-none;
+  @apply h-full flex flex-col w-[17.5rem] flex-shrink-0 font-bold select-none;
 
   &__header {
     @apply tracking-[2.4px] text-secondary text-xs mb-7;

@@ -2,29 +2,35 @@
 import MainSection from '@/components/Main/MainSection.vue'
 import HeaderPanel from '@/components/Header/Header.vue';
 import Sidebar from "@/components/Sidebar/Sidebar.vue"
-import ModalSidebar from '@/components/Modal/ModalSidebar.vue';
+import Modal from '@/components/Modal/Modal.vue';
 import { useMobile } from "@/composables/use-mobile"
-import { computed } from "vue";
+import { useModalStore } from '@/stores/use-modal';
+import { useBoardStore } from '@/stores/use-board';
+import { onMounted } from "vue";
 
 const { isMobile } = useMobile()
-const renderComponent = computed(() => isMobile.value ? ModalSidebar : Sidebar)
+const modalStore = useModalStore()
+const boardStore = useBoardStore()
+
+onMounted(() => boardStore.fetchBoards())
 </script>
 
 <template>
   <div class="app">
     <HeaderPanel/>
     <div class="app__content">
-      <Teleport to="#modal-container" :disabled="!isMobile">
-        <component :is="renderComponent"></component>
-      </Teleport>
-      <MainSection />
+      <Sidebar v-if="!isMobile"></Sidebar>
+      <MainSection></MainSection>
     </div>
   </div>
+  <Teleport to="#modal-container">
+    <Modal v-if="modalStore.isOpen"></Modal>
+  </Teleport>
 </template>
 
 <style lang="scss" scoped>
 .app {
-  @apply flex flex-col h-full bg-brand text-white;
+  @apply flex flex-col h-full bg-light text-black dark:bg-brand dark:text-white;
 
   &__content {
     @apply flex-1 flex relative
