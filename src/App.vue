@@ -5,14 +5,17 @@ import Sidebar from "@/components/Sidebar/Sidebar.vue"
 import Modal from '@/components/Modal/Modal.vue';
 import { useMobile } from "@/composables/use-mobile"
 import { useModalStore } from '@/stores/use-modal';
+import { useThemeStore } from '@/stores/use-theme';
 import { useBoardStore } from '@/stores/use-board';
 import { onMounted } from 'vue';
 
 const { isMobile } = useMobile()
 const modalStore = useModalStore()
 const boardStore = useBoardStore()
+const themeStore = useThemeStore()
 
 onMounted(async () => {
+  themeStore.setTheme()
   await boardStore.fetchBoards()
 })
 </script>
