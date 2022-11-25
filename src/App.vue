@@ -25,8 +25,10 @@ onMounted(async () => {
       <MainSection></MainSection>
     </div>
   </div>
-  <Teleport to="#modal-container">
-    <Modal v-if="modalStore.isOpen"></Modal>
+  <Teleport to="body">
+    <Transition name="fade">
+      <Modal v-if="modalStore.isOpen"></Modal>
+    </Transition>
   </Teleport>
 </template>
 

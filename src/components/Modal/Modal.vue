@@ -17,26 +17,24 @@ useClickOutside(contentRef, () => {
 
 </script>
 <template>
-  <Transition name="fade">
-    <div class="modal">
-      <div class="modal__inner" ref="contentRef">
-        <component
-          :is="componentName"
-          :formComponent="modalStore.name"
-          :formInfo="modalStore.formInfo"
-          :formData="modalStore.formData"
-        ></component>
-      </div>
+  <div class="modal">
+    <div class="modal__inner" ref="contentRef">
+      <component
+        :is="componentName"
+        :formComponent="modalStore.name"
+        :formInfo="modalStore.formInfo"
+        :formData="modalStore.formData"
+      ></component>
     </div>
-  </Transition>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .modal{
-  @apply w-screen min-h-screen max-h-full bg-black bg-opacity-50 transition-all flex items-center justify-center;
+  @apply absolute inset-0 bg-black bg-opacity-50 p-2 transition-all flex items-center justify-center;
   
   &__inner{
-    @apply self-stretch items-center flex justify-center;
+    @apply self-stretch items-center flex justify-center overflow-auto;
   }
 }
 

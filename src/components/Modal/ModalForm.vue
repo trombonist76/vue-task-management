@@ -1,11 +1,8 @@
 <script setup>
-import { defineAsyncComponent, computed, ref  } from 'vue';
+import { defineAsyncComponent } from 'vue';
 
 const props = defineProps(["formComponent", "formInfo", "formData"])
-
-const wrapper = ref(null)
-const path = computed(() => `../Form/${props.formComponent}Form.vue`)
-const FormComponent = defineAsyncComponent(() => import( /* @vite-ignore */ path.value))
+const FormComponent = defineAsyncComponent(() => import( /* @vite-ignore */ `../../components/Form/${props.formComponent}Form.vue`))
 
 </script>
 <template>
