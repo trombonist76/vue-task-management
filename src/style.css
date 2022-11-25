@@ -8,12 +8,11 @@ html,body,#app{
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-#modal-container{
-  position: absolute;
-  z-index: 1;
-}
-
 @layer components {
+  body{
+    @apply dark:bg-brand-dark
+  }
+
   .form {
     @apply bg-light dark:bg-brand m-auto p-8 flex flex-col gap-4 w-[20rem] md:w-[30rem] dark:text-white rounded-md;
   }
