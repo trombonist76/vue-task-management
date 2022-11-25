@@ -1,4 +1,4 @@
-# **Kanban Task Management Web App - Frontend Mentor** :notebook_with_decorative_cover:
+# **Kanban Task Management Web App - Frontend Mentor**
 
 
 ## :books: **Introduction** 
