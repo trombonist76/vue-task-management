@@ -1,13 +1,7 @@
-export async function getModalsData(){
-  const modals = await fetch("https://raw.githubusercontent.com/trombonist76/vue-task-management/main/src/assets/data/modals.json")
-    .then(response => response.json())
-    .then(response => response.modals)
-  
-  return modals
-}
+import modalsData from "@/assets/data/modals.json"
 
-export async function getModalData(modalName){
-  const modals = await getModalsData()
+export function getModalData(modalName){
+  const modals = modalsData.modals
   const modal = modals.find(modal => modal.name === modalName)
   return modal
 }

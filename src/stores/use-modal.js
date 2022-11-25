@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { delay, createDescription } from "@/utils"
 import { getModalData } from "@/services/modals";
+
 export const useModalStore = defineStore("modal", {
   state: () => ({
     name: "",
@@ -12,7 +13,7 @@ export const useModalStore = defineStore("modal", {
   
   actions: {
     async setActiveModal(modal, formData){
-      const modalData = await getModalData(modal)
+      const modalData = getModalData(modal)
       const formInfo = modalData?.formInfo
       
       await delay(150)
