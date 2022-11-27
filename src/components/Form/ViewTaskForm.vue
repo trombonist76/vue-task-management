@@ -6,6 +6,7 @@ import InputCheckbox from '@/components/Input/InputCheckbox.vue';
 import InputGroup from '@/components/Input/InputGroup.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useModalStore } from "@/stores/use-modal"
+import { saveBoardsLocal } from "@/services/local";
 import { computed } from 'vue';
 import * as modals from "@/constants"
 
@@ -19,10 +20,6 @@ const description = computed(() => !!task.value.description ? task.value.descrip
 const countCompletedSubtasks = computed(() => task.value.subtasks.filter(subtask => subtask.isCompleted).length)
 const subtasksLabel = computed(() => `Subtasks (${countCompletedSubtasks.value} of ${task.value.subtasks.length})`)
 
-const statusHandler = (selectedField) => {
-  boardStore.changeTaskField(taskField.value.name, selectedField, props.taskTitle)
-}
-
 const editHandler = () => {
   modalStore.closeModal()
   modalStore.setActiveModal(modals.EDIT_TASK, { taskTitle: props.taskTitle })
@@ -31,6 +28,16 @@ const editHandler = () => {
 const deleteHandler = () => {
   modalStore.closeModal()
   modalStore.setActiveModal(modals.DELETE_TASK, { name: props.taskTitle })
+}
+
+const statusHandler = (selectedField) => {
+  boardStore.changeTaskField(taskField.value.name, selectedField, props.taskTitle)
+  saveBoardsLocal(boardStore.boards)
+}
+
+const subtaskHandler = (subtask) => {
+  subtask.isCompleted = true
+  saveBoardsLocal(boardStore.boards)
 }
 </script>
 
@@ -48,7 +55,13 @@ const deleteHandler = () => {
     </div>
     <div class="form__inner">
       <InputGroup :label="subtasksLabel">
-        <InputCheckbox v-if="checkAnySubtasks" v-for="subtask in task.subtasks" :text="subtask.value" v-model="subtask.isCompleted"></InputCheckbox>
+        <InputCheckbox 
+          v-if="checkAnySubtasks" 
+          v-for="subtask in task.subtasks"
+          :text="subtask.value" 
+          :modelValue="subtask.isCompleted"
+          @update:modelValue="subtaskHandler(subtask)">
+        </InputCheckbox>
         <span v-else class="no-subtasks">No Subtasks</span>
       </InputGroup>
       <InputSelect 

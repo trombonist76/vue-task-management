@@ -10,6 +10,7 @@ import { nanoid } from 'nanoid'
 import { reactive, ref, computed } from 'vue'
 import { delay } from '@/utils'
 import { formToData, validateForm } from '@/utils/forms'
+import { saveBoardsLocal } from '@/services/local';
 
 const props = defineProps(["formInfo", "taskTitle"])
 const boardStore = useBoardStore()
@@ -64,6 +65,7 @@ const validateFormHandler = () => {
       ...taskData
     }
     boardStore.editTask(editedTask, props.taskTitle)
+    saveBoardsLocal(boardStore.boards)
     modalStore.closeModal()
     return
   }

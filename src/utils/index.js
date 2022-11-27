@@ -1,5 +1,6 @@
 import { getBoardsData } from "@/services/boards";
-export async function getBoards() {
+
+export async function fetchBoards() {
   const boards = await getBoardsData()
   return boards;
 }

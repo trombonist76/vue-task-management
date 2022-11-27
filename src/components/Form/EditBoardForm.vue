@@ -10,6 +10,7 @@ import { nanoid } from 'nanoid'
 import { reactive, ref, computed } from 'vue'
 import { delay } from '@/utils'
 import { formToData, validateForm } from "@/utils/forms"
+import { saveBoardsLocal } from "@/services/local";
 import { MAX_ADD_OPTION } from '@/constants';
 
 const props = defineProps(["formInfo", "isNameDisabled"])
@@ -57,6 +58,7 @@ const validateFormHandler = () => {
       ...board
     }
     boardStore.editBoard(editedBoard)
+    saveBoardsLocal(boardStore.boards)
     modalStore.closeModal()
     return
   }

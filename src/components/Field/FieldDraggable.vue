@@ -3,10 +3,13 @@ import FieldTask from './FieldTask.vue';
 import draggable from "vuedraggable"
 import { ref, computed } from "vue";
 import { useModalStore } from "@/stores/use-modal"
+import { useBoardStore } from "@/stores/use-board"
+import { saveBoardsLocal } from "@/services/local";
 import * as modals from "@/constants"
 
 const props = defineProps(["tasks"])
 const modalStore = useModalStore()
+const boardStore = useBoardStore()
 const drag = ref(false)
 
 const isEmpty = computed(() => ({
@@ -19,6 +22,10 @@ const dragOptions = ref({
     disabled: false,
     ghostClass: "ghost"
 })
+
+const dragHandler = () => {
+  saveBoardsLocal(boardStore.boards)
+}
 
 const clickHandler = (title) => {
   modalStore.setActiveModal(modals.VIEW_TASK, { taskTitle: title })
@@ -39,6 +46,7 @@ const clickHandler = (title) => {
     v-bind="dragOptions"
     @start="drag = true"
     @end="drag = false"
+    @change="dragHandler"
     itemKey="item"
   >
     <template #item="{ element }">

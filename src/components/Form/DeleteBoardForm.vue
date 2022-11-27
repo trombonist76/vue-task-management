@@ -1,8 +1,9 @@
 <script setup>
 import ButtonComp from '@/components/Button/Button.vue';
+import FormHeader from './FormHeader.vue';
 import { useBoardStore } from "@/stores/use-board"
 import { useModalStore } from "@/stores/use-modal"
-import FormHeader from './FormHeader.vue';
+import { saveBoardsLocal, deleteActiveBoardId } from "@/services/local";
 
 const props = defineProps(["formInfo"])
 
@@ -11,6 +12,8 @@ const modalStore = useModalStore()
 
 const deleteBoardHandler = () => {
   boardStore.deleteBoard()
+  saveBoardsLocal(boardStore.boards)
+  deleteActiveBoardId()
   modalStore.closeModal()
 }
 

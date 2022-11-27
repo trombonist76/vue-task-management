@@ -1,10 +1,11 @@
 import { defineStore } from "pinia";
-import { getBoards } from "@/utils";
+import { fetchBoards } from "@/utils";
+import { getActiveBoardId, saveActiveBoardId, saveBoardsLocal, getBoardsLocal } from "@/services/local";
 
 export const useBoardStore = defineStore("board", {
   state: () => ({
     boards: [],
-    activeBoardId: null,
+    activeBoardId: getActiveBoardId() || null,
   }),
   
   getters: {
@@ -16,7 +17,14 @@ export const useBoardStore = defineStore("board", {
 
   actions: {
     async fetchBoards(){
-      this.boards = await getBoards()
+      const boardsLocal = getBoardsLocal()
+      
+      if(boardsLocal){
+        this.boards = boardsLocal
+        return
+      }
+
+      this.boards = await fetchBoards()
     },
 
     createBoard(newBoard){
@@ -25,6 +33,7 @@ export const useBoardStore = defineStore("board", {
 
     changeActiveBoard(board){
       this.activeBoardId = board.id
+      saveActiveBoardId(board.id)
     },
 
     editBoard(editedBoard){

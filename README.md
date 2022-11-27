@@ -50,5 +50,5 @@ This repo contains the Kanban task management web app solution on the **[fronten
 
 ## :memo: **Todos**
 
-1. Use localstorage for save board and fields data
+1. :heavy_check_mark: Use localstorage for save board and fields data
 2.  Use firestore database

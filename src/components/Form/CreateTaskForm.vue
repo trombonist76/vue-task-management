@@ -10,6 +10,7 @@ import { nanoid } from 'nanoid'
 import { reactive, ref, computed } from 'vue'
 import { delay } from '@/utils'
 import { formToData, validateForm } from '@/utils/forms'
+import { saveBoardsLocal } from "@/services/local";
 
 const props = defineProps(["formInfo"])
 const boardStore = useBoardStore()
@@ -61,6 +62,7 @@ const addSubtaskHandler = () => {
 const validateFormHandler = () => {
   if(isFormValid.value){
     boardStore.addNewTask(newTask.value)
+    saveBoardsLocal(boardStore.boards)
     modalStore.closeModal()
     return
   }
